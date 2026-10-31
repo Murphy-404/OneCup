@@ -1,3 +1,0 @@
-# Only local Wrangler development. Never commit .dev.vars or any actual key.
-# Local mail links are provided only on the loopback-only local environment.
-# RESEND_API_KEY=...

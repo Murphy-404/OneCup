@@ -1,75 +1,65 @@
-# 个人自托管与备份
+# 部署指南：无登录静态版
 
-本项目仅授权个人非商业用途。使用自己的服务与数据库，不需要作者的运营账号。请先阅读 [README](../../README.md) 与 [LICENSE](../../LICENSE)。
+从 v0.2 起，个人版只有静态网页与浏览器本机数据库。**不用安装 SQLite、配置 D1、启动账号 API、注册邮件服务或创建登录密钥。** 许可仍限个人非商业使用并要求来源标注。
 
-## Node + SQLite
+## 选择部署方式
 
-开发使用 Node 24+、`npm ci`、`npm run dev`。正式运行先执行 `npm run build`，然后以 `npm start` 提供网页和 API。
+| 场景 | 方式 | 说明 |
+| --- | --- | --- |
+| 本机开发 | Node 24+ / `npm run dev` | 一条命令启动 Vite |
+| 个人服务器 | [Docker Compose](DOCKER.md) | 多阶段构建、非 root Nginx、单容器、无数据库卷 |
+| 已有 Nginx 或其他静态服务 | 上传 `dist/` | 网页和图片即可，无后端 |
+| Cloudflare 或其他静态主机 | 静态资源部署 | 无需 Workers 账号逻辑、D1 或邮件 |
 
-可复制 `.env.example` 为 `.env`。下列为需要自行替换的配置示意：
-
-```dotenv
-NODE_ENV=production
-APP_ORIGIN=https://your-domain.example
-HOST=127.0.0.1
-PORT=3001
-DATABASE_PATH=/your/persistent/path/onecup.sqlite
-```
-
-Windows 使用实际存在、可写的绝对路径，例如 `DATABASE_PATH=D:/OneCupData/onecup.sqlite`。父目录需要允许服务进程写入。不要提交 `.env`、数据库或真实域名配置。
-
-通过反向代理在 HTTPS 下提供同一来源的网页和 `/api`，保留请求 Cookie、方法与 JSON 请求体。`APP_ORIGIN` 必须与浏览器实际访问的来源一致，不能混用两个域名或端口。生产 Cookie 带 Secure。使用进程管理器恢复进程，持久化数据目录，限制数据库文件权限。
-
-Node 适配器没有验证邮件和密码找回流程。它适合作为了解此限制的个人实例，不应以“完整公开注册服务”宣传。密码使用派生哈希；不要开启其他分支中可能存在的历史明文测试配置。
-
-## Cloudflare 本地开发
+## 本机开发与预览
 
 ```sh
-npm run dev:cf
+git clone https://github.com/Murphy-404/OneCup.git
+cd OneCup
+npm ci
+npm run dev
 ```
 
-首次运行会生成参考目录 SQL、应用本地迁移和启动 `127.0.0.1:8787`。配置中 `PLAINTEXT_PASSWORD_TEST=false`；邮件预览只在 `ENVIRONMENT=local` 且访问回环地址时可用。注册后使用页面返回的本地预览链接验证，再登录。密码派生比模拟账号耗时，不要误认为卡顿就改为明文。
-
-## Cloudflare 自行发布
-
-发布会改变你的云资源；确认自己的账号、资源与套餐后再执行。密码派生需要较高 CPU 预算，免费请求 CPU 额度可能不够。仓库不自动购买套餐、不自动创建生产数据库，也不内置作者的配置。
-
-1. `npx wrangler login` 登录自己的账号。
-2. `npx wrangler d1 create onecup-personal` 创建自己的 D1，将返回 ID 写到 `wrangler.jsonc` 顶层 `d1_databases[0].database_id`。
-3. 将顶层 `name` 和 `APP_ORIGIN` 改为自己的服务名与 HTTPS 来源，设置自己的有效发件地址 `EMAIL_FROM`。
-4. 配置可发送该域名邮件的服务。Resend 适配器可用 `npx wrangler secret put RESEND_API_KEY` 写入密钥，或按所选邮件绑定调整配置。不把密钥写到 Git。
-5. 在自己的 Cloudflare 账户确认合适的 Workers 套餐和 CPU 限额后，显式配置 `limits.cpu_ms`，例如 10000。该数值是预算上限，不是性能保证。
-6. 保持 `ENVIRONMENT=production`、`DEV_EMAILS=false`、`PLAINTEXT_PASSWORD_TEST=false`。
-7. 执行下面的命令，只操作自己刚配置的数据库。种子脚本更新参考目录，不应拿真实用户数据库导出来代替它。
+使用终端显示的本机地址。开发仅绑定回环地址；不要把开发服务器当成生产服务。
 
 ```sh
-npm run cf:seed
-npx wrangler d1 migrations apply DB --remote
-npx wrangler d1 execute DB --remote --file cloudflare/seed.sql
-npm run cf:deploy
+npm run build
+npm start
 ```
 
-发布脚本会校验来源、示例 ID、发信地址、密码模式及显式 CPU 预算，再构建和上传。不会自动跑远端迁移、导入种子或修改套餐。
+构建输出到 `dist/`，预览默认 `http://127.0.0.1:8080/`。同一浏览器在不同端口属于不同存储来源；从 5173 改为 8080 时用 JSON 迁移数据，不能据此判断数据已被删除。
 
-每次发布后检查 `/api/health`、图片、邮件注册/验证、登录、保存和退出；在目标网络实测，不能仅凭域名可解析就判定完整服务可用。默认域名是否能在某地区访问不作保证。
+## 静态服务器部署
 
-## 备份、恢复与升级
+1. 用 Node 24+ 执行 `npm ci` 和 `npm run build`。
+2. 将 `dist/` **里面的内容**发布到网站根路径，而不是把整个源码目录放到公开目录。
+3. 为公网和局域网长期使用配置 HTTPS。localhost 的 HTTP 可用于开发；非 localhost 的 HTTP 下某些浏览器能力可能不可用。
+4. 缺失静态资源返回 404，页面路由可回退到 `index.html`；HTML 不长期缓存，带内容哈希的 assets 可长期缓存。
+5. `/api/` 返回 404，本版本不使用该路径，不代理到旧版账号服务。
 
-### 用户 JSON
+本仓库 `docker/default.conf` 已提供可参考的 Nginx 配置，监听 8080，静态根目录为 `/usr/share/nginx/html`。自己的 Nginx 可按环境修改监听端口、文件目录及 HTTPS；不要直接替换整台机器的全局配置。
 
-在设置中导出当前记录。JSON 不含账号密码，但仍可能有私人笔记与库存，不要在公开 Issue 上传。恢复前校验范围，旧格式升级失败时保留原数据。
+默认构建按网站根路径运行；子路径部署还需要修改 Vite base 及图片路径，当前不承诺直接把目录移动到 `/onecup/` 就能工作。
 
-### SQLite
+## Cloudflare 等静态托管
 
-停止服务后备份完整数据库并确认没有其他写进程；运行中应使用 SQLite 一致性备份能力，不把单独复制主文件当作可靠的 WAL 在线备份。恢复到隔离位置检查后再替换实际数据库，保留旧副本和回退步骤。
+选择平台提供的静态资源站点，构建命令 `npm ci && npm run build`，输出目录 `dist`。如果是本机上传，先本机构建再上传输出目录。按所选平台配置根路径、SPA 回退及缓存。
 
-### D1
+本版不附带连接作者账号或数据库的 Wrangler 配置；不能沿用旧版 D1、账号和邮件脚本。是否能在目标网络访问，仍需实测网页与图片。
 
-```sh
-npm run backup:remote
-npm run verify:backup -- path/to/database.sql
-```
+## 更新、回退和数据
 
-第一条明确导出当前 Wrangler 配置对应的远端 D1，并在 `.private/backups/` 隔离恢复验证。第二条只验证已有 SQL。上述文件包含账号与私人数据，不能提交仓库。先备份自己的库，再升级；生产 D1 回切需按自己的运维流程执行，不通过本项目自动覆盖。
+更新之前在网页里导出 JSON，并记录当前访问地址。更换程序文件或 Docker 容器，不会把浏览器记录复制到服务器，也不会提供云备份。
 
-恢复旧备份可能重新出现已删除账号，应核对删除请求与会话状态。备份保留期限、支持渠道和日志策略由部署者自行确定并如实告知使用者。
+保持协议、域名和端口不变时，升级后读取同一个 IndexedDB；更换来源时先在旧地址导出，再到新地址恢复。回退到很旧的账号版之前先保留当前 JSON，旧版不一定理解新数据格式。
+
+数据格式当前继续使用兼容 v1 的个人记录结构；数据库连接与事务版本独立管理。详细边界见 [数据与备份](STORAGE.md)。
+
+## 部署后检查
+
+- 首页与饮品图片正常，页面没有登录/注册入口。
+- 收藏一个配方，等待本机保存完成，再刷新确认仍存在。
+- 打开本机数据设置，导出 JSON；在自己的另一个浏览器中确认导入流程。
+- 检查手机上的完整图片、分步制作、计时和保存反馈。
+- 检查 HTTPS 与自己的访问地址，确认没有意外切换 origin。
+- Docker 版用 `docker compose ps` 检查健康状态；不要用容器卷是否存在判断用户数据是否保存。
