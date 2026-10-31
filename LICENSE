@@ -1,0 +1,83 @@
+OneCup Personal Non-Commercial Attribution License 1.0
+SPDX-License-Identifier: LicenseRef-OneCup-Personal-NC-1.0
+
+Copyright (c) 2026 Murphy-404 and the respective copyright holders.
+Original project: https://github.com/Murphy-404/OneCup
+
+1. Scope
+
+This license covers only the copyright interests that the OneCup copyright
+holders are entitled to license in the original code and accompanying original
+documentation. Third-party software, third-party material, trademarks and
+material not subject to copyright are not relicensed by this license. See
+THIRD_PARTY_NOTICES.md. No patent or trademark license is granted.
+
+2. Permission for personal, non-commercial use
+
+Subject to the conditions below, an individual natural person may use, copy,
+study, modify and redistribute the covered material, including modified source
+and compiled versions, solely for that individual's personal, non-commercial
+purposes. Personal learning, experimentation, household use and a free personal
+demonstration with no commercial purpose are examples of permitted uses.
+
+This permission does not authorize use by, for or on behalf of a business or
+other organization, or in the course of employment, a business, a professional
+service or other commercial activity, even when no fee is charged directly for
+the software. It does not authorize selling or licensing the software, paid
+hosting or access, advertising-supported or sponsored deployments, bundling
+with paid products, paid consulting, commercial internal tools, or other uses
+primarily directed toward commercial advantage or monetary compensation.
+Those uses require separate prior written permission from the relevant
+copyright holders. Silence or availability of source is not such permission.
+
+3. Attribution and notices
+
+Every redistribution must retain this license, the copyright notice, the name
+"OneCup", the attribution "OneCup by Murphy-404", and the original project URL.
+Modified distributions must clearly identify that they have been modified and
+must not imply endorsement by the original author.
+
+If you deploy a user interface or distribute an application containing the
+covered material, provide a reasonably visible, accessible attribution in its
+footer, About page or equivalent: "Based on OneCup by Murphy-404", linked to
+https://github.com/Murphy-404/OneCup where links are supported. A source-code-only
+distribution must include the same attribution in its README or equivalent.
+Removing attribution in order to present the covered material as your original
+work is not permitted.
+
+4. Redistribution and modifications
+
+You may not grant recipients commercial rights to covered material that you
+have not received. Recipients receive the permissions to the original covered
+material under this license, subject to the same personal, non-commercial and
+attribution conditions. Identify your modifications and retain notices for
+third-party material under its own applicable license. Nothing here requires
+disclosure of your private credentials, personal data or privately held changes.
+
+5. Rights reserved
+
+All rights not expressly granted are reserved. Copyright holders remain free
+to use their own material commercially and to grant separate permissions;
+that does not expand the permissions granted to recipients of this license.
+This license does not restrict uses allowed by applicable exceptions or
+limitations to copyright or independently granted third-party rights.
+
+6. Termination
+
+Permissions under this license terminate if you violate its conditions. If
+you cure the violation within 30 days after first becoming aware of it, the
+permissions are reinstated for that cured violation. Termination does not
+terminate compliant recipients' independent permissions under this license.
+
+7. Disclaimer
+
+THE COVERED MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NON-INFRINGEMENT. TO THE EXTENT PERMITTED BY APPLICABLE LAW,
+THE COPYRIGHT HOLDERS ARE NOT LIABLE FOR CLAIMS, DAMAGES OR OTHER LIABILITY
+ARISING FROM USE OF THE MATERIAL. Recipes, ingredient substitutions, images
+and calculations are references, not guarantees of a particular result.
+
+This is a custom source-available license. It is not an OSI-approved open-source
+license. The English text in this LICENSE is the controlling license text;
+the Chinese explanation in README.md is a convenience summary.

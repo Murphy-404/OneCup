@@ -1,0 +1,8 @@
+import {writeFile} from 'node:fs/promises';
+import {recipes,ingredientName} from '../src/data';
+import {toolsFor,toolName} from '../src/equipment';
+import {substitutionRules,solutionRequirements} from '../src/substitutions';
+const rows=recipes.map(r=>`| ${r.id} / ${r.name} | ${r.reference!.version} | ${r.ingredients.map(i=>`${ingredientName(i.id)} ${i.amount}${i.unit}${i.optional?'（可选）':''}`).join('；')} | ${toolsFor(r).filter(t=>!t.optional).map(t=>toolName(t.id)).join('、')} | 待试做 |`);
+const rules=substitutionRules.map(r=>{const req=solutionRequirements(r.id);return `| ${r.id} | ${r.recipes.length?r.recipes.join('、'):'含目标 ml 原料的目录配方'} | ${req.materials.map(ingredientName).join('、')} | ${req.tools.map(toolName).join('、')} | 计算与快照已测试；口感待试做 |`;});
+await writeFile('docs/配方与规则核对.md',`# 配方与规则核对\n\n生成自当前目录，内容版本 2026-10-29.2。执行 npm run audit:content 可重新生成。程序检查只覆盖引用、单位、计算和快照，不代表已试喝。原料规格保存在每份新版配方的 reference.specs，原有个人快照保持原样。\n\n本轮修订：原味糖浆明确为糖水质量比 1:1；咖啡液与克数不互转；茶汤按包装冲泡并冷却，浓度仍待实测；白桃乌龙补齐压果器具。所有时间为调配估计，排除称量、清洗、制冰及对应基底前置工序。IBA 网站是既有背景出处，未逐条确认原方一致，不作为本页用量验证依据。\n\n## 24 份配方\n\n| 配方 | 版本 | 单份材料 | 必需器具（允许替代另见产品） | 试做 |\n|---|---|---|---|---|\n${rows.join('\n')}\n\n## 4 条有限规则\n\n| 规则 | 范围 | 新增材料 | 新增器具 | 验证边界 |\n|---|---|---|---|---|\n${rules.join('\n')}\n\n## 首批试做候选与记录\n\n建议先做冰燕麦拿铁、冰抹茶拿铁、菠萝气泡饮、威士忌高球，各覆盖一类；这是待办，不标为已推荐或已验证。茶汤浓度、糖浆品牌、奶泡和近似替代效果的标准化需要实际记录。试做不通过可缩小正式推荐目录。\n\n每次记录：\n\n- 配方 ID、内容版本、规则 ID/版本、日期与试做者。\n- 材料品牌/规格、实际质量/体积、糖浆浓度、茶叶与茶水比例。\n- 器具型号、咖啡粉量/研磨/水温/时间/出液体积或质量（分开记录）。\n- 前置、调配、冷却分别耗时；实际产出、杯容量和剩余。\n- 风味、甜酸、质地、分层和泡沫观察；调整前后用量。\n- 实拍证据、问题、复测结论。未记录不得改为已试做。\n`);
+console.log('Updated docs/配方与规则核对.md (24 reference recipes, 4 untried rules).');

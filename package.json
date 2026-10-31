@@ -1,0 +1,59 @@
+{
+  "name": "onecup-personal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "dev:api": "tsx server/index.ts",
+    "start": "tsx server/index.ts --standalone",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "cf:seed": "tsx scripts/generate-d1-seed.ts",
+    "cf:typecheck": "tsc -p tsconfig.worker.json",
+    "cf:db:local": "npm run cf:seed && wrangler d1 migrations apply DB --local --env local && wrangler d1 execute DB --local --env local --file cloudflare/seed.sql",
+    "dev:cf": "npm run build && npm run cf:db:local && wrangler dev --env local --ip 127.0.0.1 --port 8787",
+    "cf:dry-run": "npm run build && npm run cf:typecheck && wrangler deploy --dry-run --env local --outdir cloudflare/.dry-run",
+    "cf:deploy": "node scripts/deploy-cloudflare.mjs",
+    "test:cf": "npm run cf:dry-run && tsx --test tests/worker-cloudflare.ts",
+    "audit:content": "tsx scripts/content-audit.ts",
+    "backup:remote": "tsx scripts/recovery.ts backup --remote",
+    "verify:backup": "tsx scripts/recovery.ts verify",
+    "prepare:auth": "tsx scripts/prepare-auth-migration.ts",
+    "check:service": "node scripts/service-check.mjs",
+    "test:substitutions": "tsx --test tests/features.test.ts tests/substitution-undo.test.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsx": "^4.20.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261028.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.0",
+    "wrangler": "^4.154.0",
+    "miniflare": "5.20261023.1-beta"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "description": "Personal non-commercial beverage-making toolkit with attribution required",
+  "license": "LicenseRef-OneCup-Personal-NC-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Murphy-404/OneCup.git"
+  },
+  "homepage": "https://github.com/Murphy-404/OneCup#readme",
+  "bugs": {
+    "url": "https://github.com/Murphy-404/OneCup/issues"
+  }
+}

@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+test-results/
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+cloudflare/.dry-run/
+.private/
+
+# Personal records, credentials, operational artifacts and configuration
+*.log
+*.pem
+*.key
+*.p12
+coverage/
+backups/
+wrangler.local.jsonc
