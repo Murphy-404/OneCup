@@ -1,6 +1,6 @@
 # 个人自托管与备份
 
-本项目仅授权个人非商业用途。使用自己的服务与数据库，不需要作者的运营账号。请先阅读 [README](../README.md) 与 [LICENSE](../LICENSE)。
+本项目仅授权个人非商业用途。使用自己的服务与数据库，不需要作者的运营账号。请先阅读 [README](../../README.md) 与 [LICENSE](../../LICENSE)。
 
 ## Node + SQLite
 

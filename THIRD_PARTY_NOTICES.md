@@ -19,4 +19,4 @@ OneCup's custom personal non-commercial license applies only to its own covered 
 | `wrangler` | 4.154.0 | MIT OR Apache-2.0 | See installed package |
 | `miniflare` | 5.20261023.1-beta | MIT | See installed package |
 
-Icons use lucide-react; images are documented in [ASSETS.md](docs/ASSETS.md). Node.js, Git, npm, Cloudflare and other services have their own terms and are not relicensed here.
+Icons use lucide-react; images are documented in [ASSETS.md](docs/reference/ASSETS.md). Node.js, Git, npm, Cloudflare and other services have their own terms and are not relicensed here.

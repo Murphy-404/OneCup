@@ -6,8 +6,8 @@ if(!db||db.database_id==='00000000-0000-0000-0000-000000000000')throw Error('Cre
 const url=new URL(config.vars.APP_ORIGIN);
 if(url.protocol!=='https:'||url.hostname.endsWith('.example')||url.origin!==config.vars.APP_ORIGIN)throw Error('Configure your own public HTTPS APP_ORIGIN.');
 if(config.vars.ENVIRONMENT!=='production'||config.vars.DEV_EMAILS!=='false'||config.vars.PLAINTEXT_PASSWORD_TEST!=='false')throw Error('Production requires secure authentication and disabled development emails.');
-if(!config.vars.EMAIL_FROM)throw Error('Configure your own mail service and EMAIL_FROM. See docs/DEPLOYMENT.md.');
-if(!Number.isInteger(config.limits?.cpu_ms)||config.limits.cpu_ms<1000)throw Error('Explicitly configure sufficient Workers CPU budget after reviewing your plan. See docs/DEPLOYMENT.md.');
+if(!config.vars.EMAIL_FROM)throw Error('Configure your own mail service and EMAIL_FROM. See docs/guides/DEPLOYMENT.md.');
+if(!Number.isInteger(config.limits?.cpu_ms)||config.limits.cpu_ms<1000)throw Error('Explicitly configure sufficient Workers CPU budget after reviewing your plan. See docs/guides/DEPLOYMENT.md.');
 function run(args){return new Promise((done,fail)=>{const p=spawn(process.execPath,args,{stdio:'inherit'});p.on('error',fail);p.on('exit',code=>code===0?done():fail(Error(`Command failed: ${code}`)));});}
 await run(['node_modules/typescript/bin/tsc','-b']);
 await run(['node_modules/typescript/bin/tsc','-p','tsconfig.worker.json']);
