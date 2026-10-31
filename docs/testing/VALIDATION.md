@@ -19,12 +19,12 @@ IndexedDB 测试覆盖：空记录、跨连接恢复、旧游客记录迁移、�
 
 本地执行环境未安装 Docker，不能把 Dockerfile 静态检查写成容器运行成功。GitHub Actions 的 `docker-smoke` 作业负责实际执行：
 
-1. 构建多阶段镜像。
-2. 以只读根文件系统、临时目录和移除 capabilities 的方式启动非 root 网页容器。
+1. 校验 Compose 配置，执行 README 中的 `docker compose up -d --build`，构建多阶段镜像。
+2. 以 Compose 声明的只读根文件系统、临时目录和移除 capabilities 的方式启动非 root 网页容器。
 3. 检查 `/healthz`、首页、JS、图片、LICENSE 和 SPA 回退。
 4. 确认账号/数据 API 和缺失静态文件返回 404。
 
-Compose 使用同一镜像和约束，但 Compose CLI 的端口变量、网络与宿主机防火墙仍需部署者验证。CI 运行结果以 [Actions](https://github.com/Murphy-404/OneCup/actions) 对应提交为准；Linux、Windows 的应用构建和测试另行执行。
+Compose 的自定义端口变量、自己的网络和宿主机防火墙仍需部署者验证。CI 运行结果以 [Actions](https://github.com/Murphy-404/OneCup/actions) 对应提交为准；Linux、Windows 的应用构建和测试另行执行。
 
 ## 旧版本边界
 
