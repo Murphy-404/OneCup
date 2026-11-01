@@ -1,18 +1,28 @@
-/* On phones, choosing a drink is the first task; the catalogue follows below. */
-.mobile-random-intro,.mobile-demo-note{display:none}
+/* One shared first task at every width: choose a category and draw a drink. */
+.mobile-demo-note{display:none}
+.mobile-random-intro{display:grid;grid-template-columns:minmax(340px,1fr) minmax(0,1.1fr);grid-template-rows:auto auto;align-content:center;gap:28px 48px;min-height:510px;padding:40px 32px 48px;margin:0 0 32px;border-bottom:1px solid var(--line);box-sizing:border-box}
+.mobile-random-heading{align-self:end}.mobile-random-heading h1{font-size:clamp(42px,4.2vw,64px);font-weight:700;letter-spacing:-.05em;line-height:1.2;margin:0;color:var(--ink)}
+.mobile-random-heading p{font-size:16px;line-height:1.8;color:var(--muted);margin:16px 0 0}
+.mobile-random-visual{position:relative;grid-column:2;grid-row:1/3;align-self:center;min-width:0;height:400px}
+.mobile-random-visual>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+.mobile-random-visual>span{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+.mobile-random-actions{display:grid;gap:12px;max-width:440px;text-align:center}
+.mobile-random-draw{width:100%;min-height:72px;border-radius:16px;font-size:23px;font-weight:650;gap:12px;justify-content:center}
+.mobile-random-draw svg{transition:transform .2s ease}.mobile-random-draw:active svg{transform:rotate(24deg)}
+.mobile-random-hint{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+.mobile-random-browse{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;background:none;border:0;color:var(--primary);font:inherit;font-size:13px}
+.mobile-random-browse:focus-visible,.mobile-random-draw:focus-visible{outline:3px solid var(--primary);outline-offset:4px}
+.catalog-controls{scroll-margin-top:24px}.catalog-controls:focus{outline:none}
+@media(min-width:801px) and (max-width:1100px){.mobile-random-intro{padding-inline:0;gap:24px;grid-template-columns:minmax(320px,1fr) minmax(0,1fr);min-height:470px}.mobile-random-visual{height:340px}}
 @media(max-width:800px){
  .utility-intro{display:none}
  .demo-mode-note{display:none}
- .mobile-random-intro{display:grid;grid-template-rows:auto minmax(96px,1fr) auto;gap:20px;min-height:calc(100svh - 172px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));padding:12px 0 20px;margin-bottom:28px;box-sizing:border-box}
+ .mobile-random-intro{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(96px,1fr) auto;gap:20px;min-height:calc(100svh - 172px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));padding:12px 0 20px;margin-bottom:28px;border-bottom:0;box-sizing:border-box}
  .mobile-random-heading h1{font-size:clamp(30px,8.5vw,40px);font-weight:700;letter-spacing:-.04em;line-height:1.25;margin:0;color:var(--ink)}
  .mobile-random-heading p{font-size:14px;line-height:1.8;margin:10px 0 0;color:var(--muted)}
- .mobile-random-visual{position:relative;min-height:96px;margin:0 8px;isolation:isolate}
- .random-drink{position:absolute;left:50%;top:50%;object-fit:cover;border-radius:20px;height:min(100%,258px);width:44%;max-width:164px;background:var(--photo)}
- .random-drink-left{transform:translate(-112%,-48%) rotate(-12deg);height:min(86%,228px);width:37%;filter:saturate(.88)}
- .random-drink-right{transform:translate(12%,-48%) rotate(12deg);height:min(86%,228px);width:37%;filter:saturate(.88)}
- .random-drink-center{transform:translate(-50%,-50%);box-shadow:0 12px 28px #183a2820}
- .mobile-random-visual>span{position:absolute;right:0;bottom:-4px;font-size:10px;color:var(--muted)}
- .mobile-random-actions{display:grid;gap:10px;text-align:center}
+ .mobile-random-visual{grid-column:auto;grid-row:auto;height:100%;min-height:96px;margin:0;isolation:isolate}
+ .mobile-random-visual>span{bottom:0;font-size:9px}
+ .mobile-random-actions{display:grid;gap:10px;text-align:center;max-width:none}
  .mobile-random-draw{width:100%;min-height:66px;border-radius:16px;font-size:21px;font-weight:650;gap:12px;justify-content:center}
  .mobile-random-draw svg{transition:transform .2s ease}.mobile-random-draw:active svg{transform:rotate(24deg)}
  .mobile-random-hint{font-size:12px;line-height:1.7;color:var(--muted);margin:0}

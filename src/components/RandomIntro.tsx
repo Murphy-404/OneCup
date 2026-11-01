@@ -2,14 +2,12 @@ import {ChevronDown,Dices} from 'lucide-react';
 import {categories,type Category} from '../data';
 import {RandomCategoryFilter} from './RandomCategoryFilter';
 
-export function MobileRandomIntro({count,category,onCategoryChange,onDraw,onBrowse}:{count:number;category:Category;onCategoryChange:(category:Category)=>void;onDraw:()=>void;onBrowse:()=>void}){
- return <section className="mobile-random-intro" aria-labelledby="mobile-random-title">
-  <div className="mobile-random-heading"><h1 id="mobile-random-title">今天喝什么？</h1><p>不纠结，先抽一杯喜欢的。</p></div>
+export function RandomIntro({count,category,onCategoryChange,onDraw,onBrowse}:{count:number;category:Category;onCategoryChange:(category:Category)=>void;onDraw:()=>void;onBrowse:()=>void}){
+ return <section className="mobile-random-intro" aria-labelledby="random-intro-title">
+  <div className="mobile-random-heading"><h1 id="random-intro-title">今天喝什么？</h1><p>给选择一点惊喜，给自己一杯好喝的。</p></div>
   <div className="mobile-random-visual" aria-hidden="true">
-   <img className="random-drink random-drink-left" src="/images/recipes/espresso-tonic.webp" alt="" width="240" height="320"/>
-   <img className="random-drink random-drink-right" src="/images/recipes/oat-latte.webp" alt="" width="240" height="320"/>
-   <img className="random-drink random-drink-center" src="/images/recipes/matcha.webp" alt="" width="240" height="320"/>
-   <span>AI 饮品示意</span>
+   <img src="/images/random-drinks.svg" alt="" width="640" height="480" fetchPriority="high"/>
+   <span>饮品插画 · 成品以实际制作为准</span>
   </div>
   <div className="mobile-random-actions">
    <RandomCategoryFilter value={category} onChange={onCategoryChange}/>

@@ -51,6 +51,7 @@ npm start
 
 ## 当前功能
 
+- 手机和桌面均以“随机一杯”为首屏重点，首页使用透明背景饮品插画。
 - 24 款家庭参考配方，分类、搜索、分类快捷随机（每次独立，允许重复）、材料与器具登记。
 - 有条件的替代与自制、逐项撤销、0.5～20 份用量换算、分步制作与计时。
 - 收藏与个人做法完整快照、多杯备料和同规格基底合批。
@@ -85,6 +86,8 @@ npm run audit:content
 GitHub Actions 在 Windows/Linux 运行构建和测试，并实际构建 Docker、写入记录、重建容器、验证数据保留和 SQLite 恢复。具体用例与人工验证边界见 [验证记录](docs/testing/VALIDATION.md)。
 
 [贡献指南](CONTRIBUTING.md) · [安全说明](SECURITY.md) · [第三方许可](THIRD_PARTY_NOTICES.md) · [素材说明](docs/reference/ASSETS.md)
+
+![桌面随机首页](docs/images/home-desktop.png)
 
 ![无登录版手机首页](docs/images/home-mobile.png)
 
