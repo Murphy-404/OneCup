@@ -5,6 +5,11 @@ services:
     ports:
       - "${ONECUP_BIND:-127.0.0.1}:${ONECUP_PORT:-8080}:8080"
     restart: unless-stopped
+    environment:
+      ONECUP_ORIGIN: "${ONECUP_ORIGIN:-}"
+      ONECUP_AUTO_BACKUP_HOURS: "${ONECUP_AUTO_BACKUP_HOURS:-24}"
+    volumes:
+      - onecup_data:/data
     read_only: true
     tmpfs:
       - /tmp
@@ -12,3 +17,6 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
+volumes:
+  onecup_data:
+    name: "${ONECUP_VOLUME:-onecup_personal_data}"

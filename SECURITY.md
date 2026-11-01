@@ -1,11 +1,7 @@
-# 安全反馈与部署边界
+# Security
 
-本仓库是个人非商业自托管工具，没有提供统一运营的公共账号服务。
+This is a single-user self-hosted instance without accounts. Every device allowed to reach it can read and modify the same workspace. Keep the default loopback binding; for remote use, restrict network access or add authentication at an HTTPS reverse proxy. Host and Origin checks are not authentication.
 
-发现安全问题时，不在公开 Issue 粘贴真实账号、数据库、密码、会话、邮件 token 或可直接攻击他人的完整细节。可先在 Issue 中仅说明需要一个私密报告渠道，等待维护者提供安全联系办法后发送详情。当前没有已配置或承诺响应时效的专用安全邮箱。
+Private records are transmitted to and stored by your own server. Keep the SQLite data directory outside the public static directory. Protect database and backup files; copy backups off-host and never attach them to public issues. Do not publish configuration or credentials.
 
-v0.2 无登录、账号 API、邮件或服务端数据库。个人数据在浏览器 IndexedDB，应用不提交到服务端。同源恶意脚本可能接触本机数据；部署者应维护资源完整性、HTTPS 与安全更新，不注入未知脚本。
-
-开发服务器和默认 Docker 端口仅绑定回环地址。需要局域网或公网访问时，明确配置接口、防火墙与 HTTPS。旧版本账号数据通过用户主动导出 JSON 迁移，不自动读取密码或会话。
-
-只有发布的版本和明确报告过的问题能被核对；公开代码或通过测试不等于不存在漏洞。部署者需要维护更新、监测、备份和恢复，避免公开用户记录与备份。
+Report security issues privately through GitHub's security reporting feature if available. Do not post secrets or real records. Normal bug reports belong in Issues with synthetic examples.

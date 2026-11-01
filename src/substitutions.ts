@@ -1,7 +1,8 @@
+import {validCoffeeRecord} from './coffee';
 import type {Recipe,Amount} from './data';
 import {ingredientSpecs} from './content';
 import {inferTools} from './equipment';
-export interface Preparation {id:string;version:1;target:string;label:string;inputs:Amount[];steps:string[];tools:string[];note:string;batch?:{outputMl:number;inputs:Amount[]}}
+export interface Preparation {coffeeRecord?:import('./coffee').CoffeeRecord;id:string;version:1;target:string;label:string;inputs:Amount[];steps:string[];tools:string[];note:string;batch?:{outputMl:number;inputs:Amount[]}}
 export interface ResolutionUndo {original:Amount;indexBefore:number;amountBefore:number;replacements:string[];edits:{before:string|null;after:string}[];nameBefore:string;nameAfter:string;tagsBefore:string[];tagsAfter:string[];specBefore?:string}
 export interface Resolution {id:string;version:1;target:string;kind:'preparation'|'approximation';label:string;effect:string;undo?:ResolutionUndo}
 export const substitutionRules=[
@@ -20,7 +21,8 @@ export function solutionRequirements(id:string):{materials:string[];tools:string
   default:throw Error('未知方案。');
  }
 }
-export function applySubstitution(r:Recipe,amounts:Record<string,number>,id:string,yieldMl?:number,coffeeDose?:number,coffeeWater?:number):{recipe:Recipe;amounts:Record<string,number>}{
+export function applySubstitution(r:Recipe,amounts:Record<string,number>,id:string,yieldMl?:number,coffeeDose?:number,coffeeWater?:number,coffeeRecord?:import('./coffee').CoffeeRecord):{recipe:Recipe;amounts:Record<string,number>}{
+ if(coffeeRecord&&(!validCoffeeRecord(coffeeRecord)||coffeeRecord.method!=='espresso'||coffeeRecord.dose!==coffeeDose))throw Error('萃取记录与实际粉量不一致，请重新确认。');
  const rule=substitutionRules.find(s=>s.id===id);if(!rule||!candidates(r,rule.target).some(s=>s.id===id))throw Error('此方案不适用于当前配方。');
  const recipe=structuredClone(r);const next={...amounts};const target=r.ingredients.find(i=>i.id===rule.target)!;const dose=amounts[target.id]??target.amount;
  const resolution:Resolution={id:rule.id,version:1,target:rule.target,kind:rule.kind,label:rule.label,effect:rule.effect};
@@ -41,6 +43,7 @@ export function applySubstitution(r:Recipe,amounts:Record<string,number>,id:stri
  }
  if(rule.kind==='preparation'){
   const p=recipe.preparations!.at(-1)!;
+  if(id==='espresso-home'&&coffeeRecord)p.coffeeRecord=structuredClone(coffeeRecord);
   p.batch={outputMl:yieldMl!,inputs:id==='syrup-home'?[{id:'sugar',amount:100,unit:'g'},{id:'water',amount:100,unit:'g'}]:[{id:'groundcoffee',amount:coffeeDose!,unit:'g'},{id:'water',amount:coffeeWater!,unit:'g'}]};
  }
  if(recipe.reference)recipe.reference.specs=Object.fromEntries(recipe.ingredients.map(i=>[i.id,recipe.reference!.specs[i.id]??ingredientSpecs[i.id]]));
@@ -83,6 +86,6 @@ export function batchSteps(r:Recipe,servings:number,amounts:Record<string,number
   if(!p.batch)return preparationSteps({...r,preparations:[p]},servings,amounts);
   const need=(amounts[p.target]??r.ingredients.find(i=>i.id===p.target)!.amount)*servings;
   const batches=Math.ceil(need/p.batch.outputMl);const inputs=p.batch.inputs.map(i=>`${(i.amount*batches).toFixed(1)} g ${i.id==='sugar'?'白砂糖':i.id==='groundcoffee'?'研磨咖啡粉':'水'}`).join(' + ');
-  return [`前置准备：${p.label}。若已有本次备料清单准备的成品，直接量取 ${need.toFixed(1)} ml；否则按 ${batches} 个完整批次准备：${inputs}。${p.id==='syrup-1to1'?'加热搅拌至糖完全溶解，冷却后使用。':'用意式咖啡机按记录的粉碗与萃取参数制作，不能把整豆直接使用。'}按记录估计共 ${ (batches*p.batch.outputMl).toFixed(1)} ml，本杯用 ${need.toFixed(1)} ml，剩余另行处理。实际产出需复核。`];
+  return [`前置准备：${p.label}。若已有本次备料清单准备的成品，直接量取 ${need.toFixed(1)} ml；否则按 ${batches} 个完整批次准备：${inputs}。${p.id==='syrup-1to1'?'加热搅拌至糖完全溶解，冷却后使用。':'用意式咖啡机按记录的粉碗与萃取参数制作，不能把整豆直接使用。'}${p.coffeeRecord?`已保存萃取参数：${p.coffeeRecord.bean||'未命名豆'} / ${p.coffeeRecord.equipment||'设备未注明'} / ${p.coffeeRecord.grind} / ${p.coffeeRecord.temperature} °C / ${p.coffeeRecord.seconds} 秒；粉液比 1:${p.coffeeRecord.ratio}（质量）。`:''}按记录估计共 ${ (batches*p.batch.outputMl).toFixed(1)} ml，本杯用 ${need.toFixed(1)} ml，剩余另行处理。实际产出需复核。`];
  });
 }

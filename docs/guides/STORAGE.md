@@ -1,45 +1,51 @@
-# 本机数据库、迁移与备份
+# 数据、迁移与备份
 
-## 为什么选择 IndexedDB
+[文档导航](../README.md) · [部署](DEPLOYMENT.md) · [Docker](DOCKER.md)
 
-IndexedDB 是浏览器内置的事务数据库，适合当前不需要登录、云同步或服务端用户识别的工具。每个访问者拥有自己的记录；服务器不需要通过“匿名用户 ID”把不同人的数据混到一个共享 SQLite 中。
+## 保存位置
 
-- 数据库：`onecup-personal`，数据库版本 1。
-- 对象仓库：`workspace`，键：`current`。
-- 记录：提交 revision 和经校验的完整个人数据；数据自身的 `schemaVersion` 与数据库版本分开。
-- 包括收藏、材料状态、器具、个人做法与替代快照、笔记、备料、咖啡记录和主题。
-- 不包含账号、密码、会话、作者公开身份或云端地址。
+权威数据在服务端 SQLite：Node 默认为 data/onecup.sqlite，Docker 为 /data/onecup.sqlite，位于命名卷 onecup_personal_data。浏览器保留当前页面内存，不作为持久数据源。不同浏览器、设备访问同一实例共用工作区，清理浏览器不会删除服务器已保存记录。
 
-## 保存与失败
+工作区包含收藏、材料、器具、私人做法、备料、咖啡记录、自建配方草稿、合集和主题。没有用户、密码、邮箱和会话表。自建配方上限 200、做法 1000、合集 100×50 条、备料 30 杯、萃取记录 100 条；JSON 请求/导入上限 5 MB。
 
-页面先接受当前修改，再排队写入 IndexedDB；只有事务提交成功后才展示“已保存到本机”。关闭页面之前请等待保存完成。
+SQLite 使用 WAL 与 FULL 同步，写入比较版本。提交后才显示已保存；保存错误保留页面修改，版本冲突由用户选择。网络错误不创建本地替代工作区，请先导出当前修改再重试。
 
-读取失败或旧记录损坏时，不自动用空数据覆盖。写入失败时，页面保留当前修改并显示错误与重试入口，先导出 JSON。未提交的修改在页面崩溃、强制关闭或断电时仍可能丢失，不能以页面已显示新值判断已经写入磁盘。
+## JSON 导出与迁移
 
-多标签页通过广播通知更新，事务内检查 revision。两个页面同时保存时，不允许后者静默覆盖；冲突后先备份，再选择读取数据库或保留当前页面版本。
+打开「服务器数据与备份」导出当前页面数据（包括尚未保存修改），或选 JSON 文件校验后确认替换。恢复影响全部连接设备。v1 自动升级为 v2，保留旧字段并补全空的自建配方与合集；不支持的格式、损坏引用或超限内容拒绝，不覆盖现有记录。
 
-## 旧版本迁移
+v0.2 浏览器数据只在原来源可读取：从旧地址导出，再到新版恢复；同来源可以点“导入旧浏览器记录”，先预览再确认，不自动覆盖服务器。旧账号数据库不直接复用；从原产品导出 JSON 后导入。
 
-首次打开同一来源的新版本，数据库为空时会检查 `localStorage` 的 `onecup.data.v1`。有效记录先校验后写入 IndexedDB；旧记录保留，已有 IndexedDB 数据不会被旧 localStorage 覆盖。
+合集导出是一份仅含该合集的可恢复工作区，恢复时仍会替换全部记录，先保留完整备份。它不生成公开地址。
 
-不自动读取旧账号缓存，不连接旧 Node 或 Cloudflare API。要迁移旧服务器账号的数据，请先在旧版登录并导出 JSON，然后在新版通过设置恢复。不迁移密码、账号或会话。
+## SQLite 一致性备份
 
-如果新旧网页的协议、域名或端口不同，浏览器不允许自动访问旧来源数据，只能由用户在旧地址导出并在新地址导入。
+不要在服务运行中直接复制 onecup.sqlite 文件而忽略 WAL。使用内置一致性备份：
 
-## 备份与迁移设备
+```sh
+docker compose exec -T onecup node server-dist/cli.mjs backup /data/backups/manual.sqlite
+docker compose exec -T onecup node server-dist/cli.mjs verify /data/backups/manual.sqlite
+docker compose cp onecup:/data/backups/manual.sqlite ./onecup-backup.sqlite
+```
 
-1. 点击右上角「本机数据与备份」。
-2. 导出 JSON，并在设备上妥善保管；备份包含私人记录，不上传公共仓库。
-3. 在新设备、浏览器或地址打开 OneCup，选择恢复备份。
-4. 页面校验后显示记录范围，先备份新设备当前数据，再确认替换。
-5. 等待显示保存完成，再刷新验证。
+目标文件须为新文件名，避免覆盖旧备份。默认启动时与每 24 小时生成 auto-*.sqlite；同卷快照不是离机备份。不会自动清理，请监控空间并将重要快照复制到其他设备。
 
-恢复是当前浏览器记录的**替换**，不是云合并，不影响其他设备上的副本。旧 v1 备份继续支持；不支持的格式或无效引用会被拒绝，原数据不变。
+本地 Node 对应命令为 npm run backup -- ./backups/manual.sqlite 和 npm run verify:backup -- ./backups/manual.sqlite，使用相同 DATABASE_PATH。
 
-## 存储寿命与隐私
+## 恢复 SQLite 快照
 
-IndexedDB 按来源隔离。相同设备的不同浏览器、无痕窗口或不同协议/域名/端口是独立数据空间。清除站点数据、无痕窗口结束、浏览器卸载或存储回收可能删除数据；持久化请求即使获准也不是用户主动删除时的保护措施。本版本不承诺永久保留或后台备份。
+先备份当前实例，再把恢复文件放入共享卷并校验：
 
-Docker 容器不接收这些记录，所以不挂载数据库卷，也无法通过复制镜像备份用户数据。网页部署者仍可能记录普通网页/图片请求日志，但应用不向其提交私人工作区。
+```sh
+docker compose cp ./onecup-backup.sqlite onecup:/data/backups/restore.sqlite
+docker compose exec --user root -T onecup chown 1000:1000 /data/backups/restore.sqlite
+docker compose exec -T onecup chmod 600 /data/backups/restore.sqlite
+docker compose exec -T onecup node server-dist/cli.mjs verify /data/backups/restore.sqlite
+docker compose stop onecup
+docker compose run --rm --no-deps onecup node server-dist/cli.mjs restore /data/backups/restore.sqlite --confirm-replace
+docker compose up -d
+```
 
-浏览器原理见 [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 和 [存储配额与回收](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)。
+首次运行已创建 /data/backups；若关闭自动备份且该目录不存在，先执行手动备份创建目录。不要将导入文件覆盖活动数据库。恢复先验证完整性与业务格式，并自动保存 before-restore-* 快照，再事务替换工作区、增加版本。旧页面再次写入会发生冲突，不能覆盖已恢复记录。
+
+本地 Node：npm run restore -- ./backups/manual.sqlite --confirm-replace。停下普通服务再恢复，保持相同 DATABASE_PATH；恢复文件不可替代数据盘权限和空间检查。

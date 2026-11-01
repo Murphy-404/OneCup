@@ -2,7 +2,7 @@ import {freshData,validateBackup,type UserData} from './logic';
 export const DATABASE_NAME='onecup-personal';
 export const LEGACY_KEY='onecup.data.v1';
 export interface LocalRecord {revision:number;data:UserData}
-export class LocalConflict extends Error {constructor(){super('另一个页面已经更新本机记录，请先处理版本冲突。');}}
+export class LocalConflict extends Error {constructor(){super('其他页面或设备已更新记录，请先处理版本冲突。');}}
 export interface LocalStore {read:()=>Promise<LocalRecord|null>;write:(data:UserData,expectedRevision:number)=>Promise<LocalRecord>;close:()=>void}
 export function createLocalStore(factory:IDBFactory=globalThis.indexedDB,name=DATABASE_NAME):LocalStore{
  let connection:Promise<IDBDatabase>|undefined;

@@ -22,7 +22,7 @@ export function PrepPlan({data,onChange,onClose,onOpen,notify}:{data:UserData;on
       <div className="shopping-list">{rows.map(row=>{const owned=['have','low'].includes(data.stock[row.id]??'unknown');return <div className={owned?'shopping-row owned':'shopping-row'} key={`${row.id}:${row.unit}`}><label><input type="checkbox" aria-label={`已备齐${ingredientName(row.id)}`} checked={owned} onChange={e=>onChange({...data,stock:{...data.stock,[row.id]:e.target.checked?'have':'none'}})}/><span><strong>{ingredientName(row.id)}</strong><small>{owned?(data.stock[row.id]==='low'?'快用完，请确认数量':'已登记为有'):data.stock[row.id]==='none'?'家里没有':'尚未登记'} · {row.recipes.join('、')}</small></span></label><span>{amountText(row.amount,row.unit)}</span></div>;})}</div>
       {missing.length===0&&<p className="prep-ready"><Check size={17}/>必需材料种类齐全，请继续确认数量与器具。</p>}
       <section className="prep-tools"><h3>本次所需器具 · 不随份数增加</h3><ul>{tools.map(t=><li key={t.id}>{toolName(t.id)} · {t.optional?'可选':toolStatus(t,data.equipment)==='ready'?'已具备':toolStatus(t,data.equipment)==='alternative'?'可用已登记替代品':'待准备 / 确认'}{t.alternatives?`（可替代：${t.alternatives.map(toolName).join('、')}）`:''}</li>)}</ul></section>
-      <p className="small-muted prep-footnote">勾选会将“我的材料”更新为有；取消勾选更新为没有。清单随账号同步，游客保存在此设备。</p>
+      <p className="small-muted prep-footnote">勾选会将“我的材料”更新为有；取消勾选更新为没有。清单保存在此实例的服务器数据库。</p>
       </>}
     </div>
   </Modal>;

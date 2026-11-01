@@ -25,3 +25,4 @@ cloudflare/.dry-run/
 coverage/
 backups/
 wrangler.local.jsonc
+server-dist/
