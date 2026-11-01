@@ -6,6 +6,8 @@
 
 v0.3 需要 Node.js 24+ 的 SQLite 能力，或 Docker Compose v2。单用户实例无需登录、数据库账号、邮件和自营服务。保存数据必须运行 API，不能只部署静态 dist/。
 
+Cloudflare 云端可使用 [Workers + D1](CLOUDFLARE.md)，不运行 Node 本机数据库。
+
 ## Node.js
 
 运行 npm ci、npm run build、npm start。默认监听 127.0.0.1:8080，数据为工作目录下 data/onecup.sqlite。

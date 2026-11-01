@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';
+const base=new URL(process.argv[2]);const get=async path=>{const r=await fetch(new URL(path,base),{signal:AbortSignal.timeout(20000)});assert.equal(r.status,200,path);return r;};
+assert.equal((await(await get('/healthz')).text()).trim(),'ok');const html=await(await get('/')).text();assert(html.includes('<div id="root">'));const js=html.match(/src="([^"]+\.js)"/);assert(js);assert((await(await get(js[1])).text()).includes('/api/workspace'));
+const before=await(await get('/api/workspace')).json();assert.equal(before.storage,'d1');assert.equal(before.data.schemaVersion,2);assert.equal(before.readOnly,true);
+const attempt=await fetch(new URL('/api/workspace',base),{method:'PUT',headers:{Origin:base.origin,'Content-Type':'application/json'},body:'{}'});assert.equal(attempt.status,403);assert.equal((await(await get('/api/workspace')).json()).revision,before.revision);
+assert.equal((await fetch(new URL('/api/auth/login',base))).status,404);assert((await(await get('/LICENSE')).text()).includes('OneCup Personal Non-Commercial Attribution'));const photo=await get('/images/recipes/matcha.webp');assert(photo.headers.get('Content-Type')?.startsWith('image/'));console.log('Live Cloudflare smoke passed: frontend, image, license, D1 workspace, readonly guard and absent login API.');

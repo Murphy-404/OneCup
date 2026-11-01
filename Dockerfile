@@ -6,7 +6,7 @@ COPY index.html tsconfig.json vite.config.ts ./
 COPY src ./src
 COPY public ./public
 COPY server ./server
-COPY scripts/build-server.mjs ./scripts/build-server.mjs
+COPY scripts/build-server.mjs scripts/copy-notices.mjs ./scripts/
 RUN npm run build
 
 FROM node:24-alpine AS runtime

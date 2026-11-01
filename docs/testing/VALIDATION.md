@@ -1,6 +1,6 @@
 # 验证记录与用例
 
-版本 v0.3，68 项自动化测试。运行 npm test、npm run build、npm run audit:content。
+版本 v0.3，68 项 Node/领域测试，另有 5 项 Worker/D1 集成测试。运行 npm test、npm run test:cf、npm run build、npm run audit:content。
 
 ## 自动化用例
 

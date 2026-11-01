@@ -2,7 +2,7 @@
 
 **无需登录、自己部署、用手边材料做一杯。**
 
-[文档导航](docs/README.md) · [部署](docs/guides/DEPLOYMENT.md) · [Docker](docs/guides/DOCKER.md) · [数据与备份](docs/guides/STORAGE.md) · [路线图](docs/product/ROADMAP.md) · [许可证](LICENSE)
+[文档导航](docs/README.md) · [部署](docs/guides/DEPLOYMENT.md) · [Docker](docs/guides/DOCKER.md) · [Cloudflare](docs/guides/CLOUDFLARE.md) · [数据与备份](docs/guides/STORAGE.md) · [路线图](docs/product/ROADMAP.md) · [许可证](LICENSE)
 
 v0.3 使用 **Node.js + 服务端 SQLite + Docker 持久数据卷**。记录保存到服务器；更换浏览器或清理站点数据后，重新连接同一实例即可读取。一个实例对应一份私人工作区，所有连接设备共用记录，没有账号和社交功能。
 
@@ -30,6 +30,12 @@ docker compose up -d --build
 正常停止、升级、重建容器会保留命名卷。不要删除数据卷或使用带删卷选项的停止命令。卷不能保护磁盘故障，请把备份复制到另一台设备。详细更新、恢复、权限与远程配置见 [Docker 指南](docs/guides/DOCKER.md)。
 
 **默认只允许本机访问。** 能连接实例的人可以读取和修改全部记录。远程使用应限制在可信网络/VPN，或通过带访问控制的 HTTPS 反向代理；Origin 检查不能代替认证。
+
+## Cloudflare 托管
+
+[在线只读演示](https://onecup-personal.onecup-studio.workers.dev/)
+
+支持 Workers + 独立 D1 持久数据库；默认公开只读演示，也可在限制访问后使用单用户可写模式。详见 [Cloudflare 部署](docs/guides/CLOUDFLARE.md)。
 
 ## 本地运行与开发
 

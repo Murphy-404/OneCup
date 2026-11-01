@@ -36,3 +36,5 @@ docs/
 LICENSE、SECURITY.md、CONTRIBUTING.md 和 THIRD_PARTY_NOTICES.md 保留在仓库根目录，方便 GitHub 识别与直接访问。新增文档应放入对应目录，并在本页登记；移动时同步更新链接。
 
 - [完整产品 PRD](product/PRD.md)：范围、优先级、数据与验收要求。
+
+- [Cloudflare 托管](guides/CLOUDFLARE.md)：Workers + D1、公开演示与私有使用、备份。
