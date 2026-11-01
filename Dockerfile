@@ -7,6 +7,9 @@ COPY src ./src
 COPY public ./public
 COPY server ./server
 COPY scripts/build-server.mjs scripts/copy-notices.mjs ./scripts/
+COPY LICENSE THIRD_PARTY_NOTICES.md ./
+COPY licenses ./licenses
+COPY docs/reference/ASSETS.md ./docs/reference/ASSETS.md
 RUN npm run build
 
 FROM node:24-alpine AS runtime
