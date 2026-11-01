@@ -44,10 +44,9 @@ export function stepText(step: string, r: Recipe, amounts: Record<string,number>
     return ingredient ? amountText((amounts[id] ?? ingredient.amount)*servings,ingredient.unit) : ingredientName(id);
   });
 }
-export function makeRandomBag(ids: string[], random = Math.random) {
-  const bag = [...ids];
-  for(let i=bag.length-1;i>0;i--) { const j=Math.floor(random()*(i+1)); [bag[i],bag[j]]=[bag[j],bag[i]]; }
-  return bag;
+export function pickRandom<T>(items:readonly T[],random=Math.random):T|undefined {
+  if(!items.length)return undefined;
+  return items[Math.floor(random()*items.length)];
 }
 const knownIds = new Set(ingredients.map(i=>i.id));
 const validStatuses = new Set(['unknown','have','low','none']);

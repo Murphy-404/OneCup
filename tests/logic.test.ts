@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { recipes, ingredients } from '../src/data';
-import { freshData, recipeDraft, shoppingList, makeRandomBag, missingIngredients, stepText, validateBackup, type PersonalVersion } from '../src/logic';
+import { freshData, recipeDraft, shoppingList, pickRandom, missingIngredients, stepText, validateBackup, type PersonalVersion } from '../src/logic';
 
 test('catalogue has six recipes in each category, known ingredients and valid step references',()=>{
   assert.equal(recipes.length,24);
@@ -29,11 +29,14 @@ test('step quantities follow edited base amounts and serving scale without cumul
   for(let i=0;i<20;i++)stepText(r.steps[0],r,amounts,1.5);
   assert.equal(amounts.matcha,2.75);
 });
-test('a random round contains every eligible recipe exactly once',()=>{
-  const ids=recipes.map(r=>r.id);const bag=makeRandomBag(ids);
-  assert.equal(bag.length,24);assert.equal(new Set(bag).size,24);
-  assert.deepEqual([...bag].sort(),[...ids].sort());assert.notEqual(bag,ids);
-  assert.deepEqual(makeRandomBag([]),[]);assert.deepEqual(makeRandomBag(['one']),['one']);
+test('independent random selection handles empty and single candidates without mutating inputs',()=>{
+  const ids=['a','b','c'];assert.equal(pickRandom([],()=>0),undefined);assert.equal(pickRandom(['one'],()=>.8),'one');pickRandom(ids,()=>.5);assert.deepEqual(ids,['a','b','c']);
+});
+test('each eligible item has an equal random interval, including first and last',()=>{
+  const ids=recipes.map(r=>r.id);assert.deepEqual(ids.map((_,i)=>pickRandom(ids,()=>(i+.5)/ids.length)),ids);assert.equal(pickRandom(ids,()=>0),ids[0]);assert.equal(pickRandom(ids,()=>.99999999),ids.at(-1));
+});
+test('every click draws independently and repeated results are allowed without a pool',()=>{
+  const ids=['a','b','c'];const values=[0,0,.99,0];assert.deepEqual(values.map(value=>pickRandom(ids,()=>value)),['a','a','c','a']);assert.equal(ids.length,3);
 });
 function backup(){
   const snapshot=structuredClone(recipes[0]);
