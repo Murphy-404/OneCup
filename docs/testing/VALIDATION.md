@@ -1,6 +1,6 @@
 # 验证记录与用例
 
-版本 v0.3。运行 npm test、npm run build、npm run audit:content。
+版本 v0.3，68 项自动化测试。运行 npm test、npm run build、npm run audit:content。
 
 ## 自动化用例
 
@@ -23,5 +23,7 @@ GitHub Actions 同时在 Windows/Linux 测试。Docker 行为由 docker-smoke �
 ## 浏览器与人工验收
 
 开发中用独立测试数据库验证自建校验、保存、合集添加、手机尺寸布局和重新载入。生产数据不用于测试。
+
+已在 390×844 和 320px 浏览器视口检查新编辑与合集流程、材料步骤换算和水平溢出。演示数据见 [手机截图](../images/private-library-mobile.png)。
 
 仍需真实手机触控、减少动画/放大、设备断网恢复、真实代理入口、备份复制到另一设备后的恢复演练。配方味道、替代效果、容量适配和食品保存时限不能由自动化测试证明；不将参考内容标记为试做。

@@ -81,3 +81,5 @@ GitHub Actions 在 Windows/Linux 运行构建和测试，并实际构建 Docker�
 [贡献指南](CONTRIBUTING.md) · [安全说明](SECURITY.md) · [第三方许可](THIRD_PARTY_NOTICES.md) · [素材说明](docs/reference/ASSETS.md)
 
 ![无登录版手机首页](docs/images/home-mobile.png)
+
+[私人配方与合集手机预览](docs/images/private-library-mobile.png)（测试示例数据）
