@@ -11,6 +11,13 @@ import {openStore,readBackup,StoreConflict} from '../server/store';
 import {createApplication} from '../server/app';
 import {freshData,recipeDraft} from '../src/logic';
 import {recipes} from '../src/data';
+import {workspaceWithPhoto} from './photo-fixture';
+
+test('uploaded recipe photos survive SQLite reopen and an independent database backup',async t=>{
+ const dir=temp(t),path=join(dir,'photos.sqlite'),data=workspaceWithPhoto();let store=openStore(path);
+ try{store.write(data,0);await store.backupTo(join(dir,'photos-backup.sqlite'));}finally{store.close();}
+ store=openStore(path);try{assert.deepEqual(store.read().data,data);assert.deepEqual(readBackup(join(dir,'photos-backup.sqlite')),data);}finally{store.close();}
+});
 function temp(t:any){const dir=mkdtempSync(join(tmpdir(),'onecup-'));t.after(()=>{try{rmSync(dir,{recursive:true,force:true});}catch{}});return dir;}
 async function app(t:any,dir:string,origin?:string){const value=createApplication({databasePath:join(dir,'db.sqlite'),staticDirectory:dir,origin});value.server.listen(0,'127.0.0.1');await once(value.server,'listening');const address=value.server.address() as {port:number};t.after(async()=>{await new Promise<void>((done,fail)=>{value.server.close(e=>e?fail(e):done());value.server.closeAllConnections();});value.store.close();rmSync(dir,{recursive:true,force:true});});return {...value,url:`http://127.0.0.1:${address.port}`};}
 test('SQLite records survive closed connections and contain full personal snapshots',t=>{const dir=temp(t),path=join(dir,'db.sqlite');let store=openStore(path);const data={...freshData(),favorites:['matcha'],stock:{ice:'have' as const},versions:[recipeDraft(recipes[0])],plan:[recipeDraft(recipes[1])]};assert.equal(Object.values(store.db.prepare('PRAGMA journal_mode').get()!)[0],'wal');assert.equal(Object.values(store.db.prepare('PRAGMA synchronous').get()!)[0],2);store.write(data,0);store.close();store=openStore(path);try{assert.deepEqual(store.read().data,data);assert.equal(store.read().revision,1);}finally{store.close();}});

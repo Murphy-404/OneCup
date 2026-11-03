@@ -2,6 +2,7 @@ import { ingredientName, ingredients, recipes, type Recipe, type StockStatus } f
 import { validCoffeeRecord, type CoffeeRecord } from './coffee';
 import { equipment, type EquipmentStock } from './equipment';
 import { shoppingIngredients } from './substitutions';
+import {validatePhoto} from './photo';
 export interface PersonalVersion { id: string; recipeId: string; name: string; servings: number; amounts: Record<string, number>; note: string; snapshot: Recipe; updatedAt: string }
 export interface CustomRecipe {id:string; recipe:Recipe; baseServings:number; status:"draft"|"ready"; updatedAt:string}
 export interface RecipeCollection {id:string;name:string;description:string;items:{id:string;source:"reference"|"version"|"custom";sourceId:string;snapshot:PersonalVersion}[];updatedAt:string}
@@ -61,7 +62,7 @@ export function validateBackup(input: unknown): UserData {
   const customId=(id:unknown)=>typeof id==='string'&&/^custom-[a-f0-9-]{36}$/.test(id);
   for(const c of customRecipes){
     if(!isRecord(c)||!customId(c.id)||!['draft','ready'].includes(String(c.status))||!finiteNumber(c.baseServings,.5,20)||typeof c.updatedAt!=='string'||!Number.isFinite(Date.parse(c.updatedAt))||!isRecord(c.recipe)||c.recipe.id!==c.id)throw Error('自建配方格式无效。');
-    const r=c.recipe;if(typeof r.name!=='string'||r.name.length>100||typeof r.description!=='string'||r.description.length>10000||typeof r.source!=='string'||r.source.length>2000||typeof r.story!=='string'||r.story.length>10000||!['coffee','tea','fruit','cocktail'].includes(String(r.category))||!finiteNumber(r.minutes,0,10000)||typeof r.method!=='string'||r.method.length>200||typeof r.en!=='string'||typeof r.alcohol!=='boolean'||!Array.isArray(r.tags)||r.tags.some(x=>typeof x!=='string')||!finiteNumber(r.image,0,23)||!Number.isInteger(r.image)||!Array.isArray(r.ingredients)||r.ingredients.length>100||!Array.isArray(r.steps)||r.steps.length>100||r.steps.some(x=>typeof x!=='string'||x.length>10000))throw Error('自建配方字段无效。');
+    const r=c.recipe;validatePhoto(r.photo);if(typeof r.name!=='string'||r.name.length>100||typeof r.description!=='string'||r.description.length>10000||typeof r.source!=='string'||r.source.length>2000||typeof r.story!=='string'||r.story.length>10000||!['coffee','tea','fruit','cocktail'].includes(String(r.category))||!finiteNumber(r.minutes,0,10000)||typeof r.method!=='string'||r.method.length>200||typeof r.en!=='string'||typeof r.alcohol!=='boolean'||!Array.isArray(r.tags)||r.tags.some(x=>typeof x!=='string')||!finiteNumber(r.image,0,23)||!Number.isInteger(r.image)||!Array.isArray(r.ingredients)||r.ingredients.length>100||!Array.isArray(r.steps)||r.steps.length>100||r.steps.some(x=>typeof x!=='string'||x.length>10000))throw Error('自建配方字段无效。');
     if(r.ingredients.some(i=>!isRecord(i)||!knownIds.has(String(i.id))||!finiteNumber(i.amount,0,100000)||!['ml','g','片'].includes(String(i.unit))||i.optional!==undefined&&typeof i.optional!=='boolean')||new Set(r.ingredients.map(i=>i.id)).size!==r.ingredients.length)throw Error('自建配方材料无效。');
     if(!Array.isArray(r.toolRequirements)||r.toolRequirements.some(x=>!isRecord(x)||!equipment.some(t=>t.id===x.id))||new Set(r.toolRequirements.map(x=>x.id)).size!==r.toolRequirements.length)throw Error('自建配方器具无效。');
     const ingredientRows=r.ingredients;
@@ -106,6 +107,7 @@ export function validateBackup(input: unknown): UserData {
 }
 function validateResolutions(s:unknown){
  if(!isRecord(s))throw Error('配方快照无效。');
+ validatePhoto(s.photo);
  if(s.resolutions!==undefined&&(!Array.isArray(s.resolutions)||s.resolutions.length>3||s.resolutions.some(r=>!isRecord(r)||!['syrup-home','espresso-home','milk-oat','instant-base'].includes(String(r.id))||r.version!==1||!['preparation','approximation'].includes(String(r.kind))||!knownIds.has(String(r.target))||typeof r.label!=='string'||r.label.length>200||typeof r.effect!=='string'||r.effect.length>2000)))throw Error('替代方案无效。');
  if(s.preparations!==undefined&&(!Array.isArray(s.preparations)||s.preparations.length>2||s.preparations.some(p=>!isRecord(p)||!['syrup-1to1','espresso-extract'].includes(String(p.id))||p.version!==1||!['syrup','espresso'].includes(String(p.target))||!Array.isArray(p.inputs)||p.inputs.length!==2||p.inputs.some(i=>!isRecord(i)||!['sugar','groundcoffee','water'].includes(String(i.id))||i.unit!=='g'||!finiteNumber(i.amount,0,100000))||new Set(p.inputs.map(i=>i.id)).size!==2||!Array.isArray(p.tools)||p.tools.some(id=>!equipment.some(t=>t.id===id))||typeof p.label!=='string'||typeof p.note!=='string'||p.note.length>2000||!Array.isArray(p.steps)||p.steps.length!==0)))throw Error('自制原料配方无效。');
  if(Array.isArray(s.preparations)&&s.preparations.some(p=>!Array.isArray(s.ingredients)||!s.ingredients.some(i=>isRecord(i)&&i.id===p.target&&finiteNumber(i.amount,.0001,100000))))throw Error('自制原料缺少有效的目标用量。');

@@ -1,7 +1,18 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {resolve} from 'node:path';
 import {Miniflare,Log,LogLevel,convertV4MiniflareOptions} from 'miniflare';
 import {freshData,recipeDraft} from '../src/logic';import {recipes} from '../src/data';
+import {workspaceWithPhoto,photoSample} from './photo-fixture';
 const origin='https://onecup.example.test';
+
+test('D1 preserves uploaded photos in recipe and backup snapshots and rejects invalid replacements atomically',async()=>{
+ const f=await fixture();try{
+  const data=workspaceWithPhoto(),saved=await f.call(undefined,'PUT',{data,revision:0});assert.equal(saved.status,200,saved.body.slice(0,200));
+  assert.deepEqual(JSON.parse((await f.call('/api/backup')).body),data);
+  const bad=structuredClone(data);bad.customRecipes[0].recipe.photo='https://example.test/photo.jpg';assert.equal((await f.call(undefined,'PUT',{data:bad,revision:1})).status,400);assert.deepEqual(JSON.parse((await f.call()).body).data,data);
+  const removed=structuredClone(data);delete removed.customRecipes[0].recipe.photo;assert.equal((await f.call(undefined,'PUT',{data:removed,revision:1})).status,200);
+  const restored=JSON.parse((await f.call()).body).data;assert.equal(restored.customRecipes[0].recipe.photo,undefined);assert.equal(restored.collections[0].items[0].snapshot.snapshot.photo,photoSample);
+ }finally{await f.close();}
+});
 async function fixture(mode='editable'){
  const options=(value:string)=>convertV4MiniflareOptions({cf:false,log:new Log(LogLevel.ERROR),workers:[{name:'personal-test',modules:true,scriptPath:resolve('cloudflare/.dry-run/worker.js'),compatibilityDate:'2026-10-01',d1Databases:{DB:'personal-test-db'},bindings:{APP_ORIGIN:origin,WORKSPACE_MODE:value}}]});
  const mf=new Miniflare(options(mode));await mf.ready;const db=await mf.getD1Database('DB','personal-test');

@@ -1,0 +1,8 @@
+.recipe-image-editor{padding:20px 0;border-block:1px solid var(--line)}
+.drink-photo.user-photo{background-image:none;background-color:var(--panel)}.drink-photo.user-photo>img{object-fit:contain}
+.recipe-image-editor>h3{margin:0 0 12px}.recipe-image-editor .library-actions{margin-top:12px}
+.editor-photo-preview{display:block;width:100%;height:220px;object-fit:contain;background:var(--panel);border-radius:12px}
+.editor-photo-empty{display:flex;min-height:140px;align-items:center;justify-content:center;gap:10px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:13px}
+.private-card>.drink-photo{width:100%;height:160px;border-radius:12px;overflow:hidden}.private-card>.drink-photo>img{width:100%;height:100%;object-fit:contain;background:var(--panel)}
+.single-image-note{font-size:11px;color:var(--muted);line-height:1.8;padding:0 15px 12px;margin:0}
+@media(max-width:800px){.detail-photo .complete-preview.single-preview .preview-zoom{grid-column:1;grid-row:2}.detail-photo .complete-preview.single-preview .single-image-note{grid-column:2;grid-row:2;padding:0;font-size:10px;align-self:center}.editor-photo-preview{height:180px}.recipe-image-editor .library-actions>button{min-height:44px}}

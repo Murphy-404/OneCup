@@ -12,6 +12,7 @@ export interface Recipe {
   story: string; source: string;
   reference?:RecipeReference;
   toolRequirements?:ToolRequirement[];
+  photo?:string;
 }
 export const categories = [
   { id: 'all', name: '全部饮品', en: 'ALL' }, { id: 'coffee', name: '咖啡', en: 'COFFEE' },

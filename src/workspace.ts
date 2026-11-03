@@ -1,3 +1,4 @@
+import {assertWorkspaceFits} from './photo';
 import {useEffect,useRef,useState} from 'react';
 import {freshData,validateBackup,type UserData} from './logic';
 import {LocalConflict,type LocalStore} from './local-db';
@@ -44,7 +45,7 @@ export function useWorkspace(notify:(message:string)=>void){
   if(serviceRef.current.readOnly){notice.current('此站点为公开只读演示。请自部署个人实例后保存记录。');return false;}
   if(!ready){notice.current('服务器记录尚未读取成功，请先重试读取；未覆盖原数据。');return false;}
   if(blocked.current){notice.current('请先处理保存失败或版本冲突，并导出当前记录。');return false;}
-  try{const valid=structuredClone(validateBackup(next));useData(valid);enqueue(valid);return true;}catch(error){notice.current(error instanceof Error?error.message:'记录无效，未修改服务器数据。');return false;}
+  try{const valid=structuredClone(validateBackup(next));assertWorkspaceFits(valid,4_999_000);useData(valid);enqueue(valid);return true;}catch(error){notice.current(error instanceof Error?error.message:'记录无效，未修改服务器数据。');return false;}
  }
  function retrySave(){if(!ready){void boot();return;}if(syncRef.current.state==='conflict')return;blocked.current=false;enqueue(dataRef.current);}
  async function resolveConflict(choice:'local'|'remote'){
