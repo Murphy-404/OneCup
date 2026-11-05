@@ -27,3 +27,6 @@ backups/
 wrangler.local.jsonc
 server-dist/
 wrangler.jsonc
+
+.superpowers/
+backend/bin/

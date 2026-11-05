@@ -6,10 +6,14 @@ OneCup Personal 的文档按使用任务分类。第一次使用先看 [项目 R
 
 | 你要做什么 | 文档 | 分类 |
 | --- | --- | --- |
-| 了解功能、安装并启动 | [项目介绍与快速开始](../README.md#快速开始) | 根目录入口 |
-| Node.js 或 Docker 自托管 | [部署指南](guides/DEPLOYMENT.md) | 使用与部署 |
+| 了解功能、安装并启动 | [项目介绍与本地运行](../README.md#本地运行与开发) | 根目录入口 |
+| Go 或 Docker 自托管 | [部署指南](guides/DEPLOYMENT.md) | 使用与部署 |
 | 用 Docker Compose 部署和更新 | [Docker 部署](guides/DOCKER.md) | 使用与部署 |
 | 了解 SQLite、旧记录迁移和 JSON 备份 | [数据与备份](guides/STORAGE.md) | 使用与部署 |
+| 了解前后端边界、模块与构建 | [系统架构](development/ARCHITECTURE.md) | 开发 |
+| 从旧 Node SQLite 迁移或回退 | [Go 迁移指南](guides/MIGRATION-GO.md) | 使用与部署 |
+| 对接单用户 HTTP 接口 | [API 合约](reference/API.md) | 开发 |
+| 查看重构决策与验证范围 | [Go 重构记录](development/GO-REFACTOR.md) | 开发 |
 | 查看已实现能力和后续计划 | [路线图](product/ROADMAP.md) | 产品规划 |
 | 了解 AI 图片、配方来源与素材边界 | [素材说明](reference/ASSETS.md) | 素材与参考 |
 | 核对当前配方、规格、器具与替代规则 | [配方与规则核对](reference/配方与规则核对.md) | 素材与参考 |
@@ -24,7 +28,7 @@ OneCup Personal 的文档按使用任务分类。第一次使用先看 [项目 R
 ```text
 docs/
   README.md                  文档总入口
-  guides/DEPLOYMENT.md        Node.js 与 Docker 自托管
+  guides/DEPLOYMENT.md        Go 与 Docker 自托管
   guides/DOCKER.md            Docker 部署
   guides/STORAGE.md           服务器数据库、迁移与备份
   product/ROADMAP.md          产品范围与后续计划

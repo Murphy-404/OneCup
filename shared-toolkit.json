@@ -1,5 +1,5 @@
 {
-  "description": "Common beverage UI and domain baseline. Account, social, persistence adapters and deployment configuration are edition-specific.",
+  "description": "Canonical beverage React UI and domain source. Editions import this source directly; Go adapters share this backend module. Platform persistence and account extensions remain edition-specific.",
   "files": [
     "public/images/random-drinks.svg",
     "public/images/recipes/blacktea-latte.webp",

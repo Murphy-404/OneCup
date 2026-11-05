@@ -10,7 +10,9 @@
 
 先讨论范围，再建立分支。保持材料规格、份数、步骤、备料和快照一致，不把不确定的替代或单位转换作为已验证事实。
 
-提交前运行 `npm run build`、`npm test`；修改 Docker 时检查容器构建、启动、健康与静态资源。测试使用隔离数据。不要提交 node_modules、构建输出、.env、用户数据、导出和运行日志。当前版本没有 Worker 和账号 API；单用户服务端 SQLite 为主要持久存储。
+提交前运行 `npm run build:all`、`npm test`、`npm run test:backend`、`npm run test:native`；修改 Docker 时检查容器构建、启动、健康与静态资源。测试使用隔离数据。不要提交 node_modules、构建输出、.env、用户数据、导出和运行日志。单用户版没有账号 API；Cloudflare Workers/D1 仍是独立的平台适配器，修改后运行 `npm run test:cf`。单用户服务端 SQLite 为主要持久存储。
+
+公共配方或校验规则变更后运行 `npm run contracts:generate`，提交生成的 catalog 与合约样例，再运行 Go 测试。Node 只用于前端、开发脚本和平台适配测试；不要重新增加 Node SQLite 自托管服务。详见 [架构](docs/development/ARCHITECTURE.md)。
 
 ## 贡献授权
 

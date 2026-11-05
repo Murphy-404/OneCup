@@ -4,7 +4,7 @@ import { ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpFromLine, Check, Clipboa
 import { categories, ingredients, ingredientName, recipes, type Category, type Recipe, type StockStatus } from './data';
 import { amountText, recipeDraft, pickRandom, missingIngredients, stepText, validateBackup, type PersonalVersion, type UserData } from './logic';
 import { Modal } from './components/Modal';
-import {useEdition} from './edition';
+import {useEdition} from '@onecup/edition';
 import './styles.css';
 import './tool.css';
 import './iteration.css';
@@ -32,7 +32,7 @@ import {RandomCategoryFilter} from './components/RandomCategoryFilter';
 import {RandomIntro} from './components/RandomIntro';
 import {referenceTime} from './content';
 import {PersonalLibrary} from './components/PersonalLibrary';
-import {ServiceInfo} from './components/ServiceInfo';
+import {ServiceInfo} from '@onecup/service-info';
 
 const stockLabels: Record<StockStatus,string>={unknown:'未登记',have:'有',low:'快用完',none:'没有'};
 const themes=[{id:'oat',name:'一杯白绿',color:'#006446',bg:'#ffffff',note:'白色界面，绿色操作与状态'},{id:'coffee',name:'亚麻奶咖',color:'#776354',bg:'#fcfaf8',note:'浅奶白，少量暖棕'},{id:'slate',name:'月光冷灰',color:'#526872',bg:'#f8fafb',note:'清透的冷白与灰蓝'},{id:'sage',name:'雾感鼠尾草',color:'#586d54',bg:'#f9fbf7',note:'白色为主，淡绿点缀'},{id:'clay',name:'陶土杏白',color:'#846251',bg:'#fffaf7',note:'杏白底色，浅陶土点缀'}];

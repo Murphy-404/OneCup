@@ -21,3 +21,5 @@ OneCup's custom personal non-commercial license applies only to its own covered 
 | `wrangler` | 4.154.0 | MIT OR Apache-2.0 | See installed package |
 
 Icons: lucide-react. Images: [ASSETS.md](docs/reference/ASSETS.md). Docker base images, Node.js and Cloudflare tooling have their own applicable terms; their rights are not changed by this project license.
+
+Go API uses a pure Go SQLite driver and its transitive runtime modules. See [linked Go dependencies](licenses/GO-DEPENDENCIES.md) and the included original licenses. Regenerate with `node scripts/go-licenses.mjs` after dependency changes. The Go standard library license is also included.

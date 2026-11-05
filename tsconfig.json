@@ -14,11 +14,18 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@onecup/edition": [
+        "./src/edition.tsx"
+      ],
+      "@onecup/service-info": [
+        "./src/components/ServiceInfo.tsx"
+      ]
+    }
   },
   "include": [
     "src",
-    "server",
     "vite.config.ts"
   ]
 }
