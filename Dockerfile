@@ -35,6 +35,7 @@ CMD ["serve"]
 FROM nginx:stable-alpine AS web
 COPY --from=frontend-build /app/dist /usr/share/nginx/html
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
-RUN sed -i 's@/var/run/nginx.pid@/tmp/nginx.pid@' /etc/nginx/nginx.conf && chown -R nginx:nginx /var/cache/nginx
+COPY deploy/nginx-main.conf /etc/nginx/nginx.conf
+RUN chown -R nginx:nginx /var/cache/nginx
 USER nginx
 EXPOSE 8080
