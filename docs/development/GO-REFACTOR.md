@@ -33,6 +33,6 @@ Go 合约样例包含 v1、完整 v2 图片与合集、自建草稿、所有参�
 
 Go 测试新增真实 SQLite 事务并发冲突和备份恢复；前端既有业务测试继续保留。GitHub Actions 配置 Windows/Linux 构建、Go 测试、原生冒烟、Workers/D1 和 Docker 重建恢复测试。
 
-本地开发机未安装 Docker，实际 Docker 构建与重建结果应以对应提交的 CI 为准。此轮不新增视觉改版；没有新增真实手机人工回归。Go 原生服务尚未部署公网服务器，现有 Workers 地址不等同于 Go 运行环境。详细测试记录见 [验证记录](../testing/VALIDATION.md)。
+本地开发机未安装 Docker；commit `00b5809` 的 [CI](https://github.com/Murphy-404/OneCup/actions/runs/42021139437) 已实际通过 Windows/Linux、Docker 构建、容器重建持久化和 SQLite 恢复。初次发现的 Nginx PID 权限问题已用显式 /tmp 路径修复。此轮不新增视觉改版；没有新增真实手机人工回归。Go 原生服务尚未部署公网服务器，现有 Workers 地址不等同于 Go 运行环境。详细测试记录见 [验证记录](../testing/VALIDATION.md)。
 
 原始 [设计](../superpowers/specs/2026-11-05-go-refactor-design.md) 和 [实施计划](../superpowers/plans/2026-11-05-go-refactor.md) 留作决策记录；运维请优先使用当前部署、迁移和备份指南。

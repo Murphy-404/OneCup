@@ -53,3 +53,9 @@ GitHub Actions 同时在 Windows/Linux 测试。Docker 行为由 docker-smoke �
 空 PATH 原生进程：保存完整图片、私人配方与合集后关闭重开；直接读取旧 Node workspace 数据库；在线备份、只读 verify、无确认恢复拒绝、确认恢复及 before-restore 快照。Go 测试还覆盖并发 CAS、幂等重试、损坏/缺失记录不重置、错误请求不修改数据库、5 MB 边界、HEAD/SPA/资源404、CSP，以及未来数据库版本/账号备份拒绝。Windows 原生冒烟与 Linux amd64 CGO=0 交叉编译已运行；Linux 运行和 Docker 实测以 CI 为准。
 
 这轮没有新的真实浏览器或手机视觉回归，前面的截图属于历史验收。详见 [重构记录](../development/GO-REFACTOR.md)。
+
+## 2026-11-05 CI 实测结果
+
+运行代码 commit `00b5809` 的 [GitHub Actions](https://github.com/Murphy-404/OneCup/actions/runs/42021139437)：Windows、Linux 构建与测试，以及 Docker smoke 三个作业全部成功。Docker 实际完成双镜像构建、非 root 服务启动、静态资源与单用户 API 检查、写入记录、重建容器后读取、创建及校验 SQLite 快照、修改工作区、确认恢复并再次核对原数据。
+
+初次容器测试暴露 Nginx 基础镜像使用 /run/nginx.pid 导致普通用户无法启动。修复为仓库内显式 nginx-main.conf，PID 写入 /tmp；重新构建、启动与恢复已通过。保留失败与修复记录，避免将配置静态检查当作容器运行证明。
