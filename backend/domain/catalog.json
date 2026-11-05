@@ -1,0 +1,1968 @@
+{
+  "recipes": [
+    {
+      "id": "matcha",
+      "name": "冰抹茶拿铁",
+      "en": "ICED MATCHA LATTE",
+      "category": "tea",
+      "image": 0,
+      "description": "抹茶的清新，遇上牛奶的柔软。给忙碌的日常，留一点绿色。",
+      "tags": [
+        "清新茶香",
+        "绵柔奶感"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "matcha",
+          "amount": 3,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "water",
+          "amount": 40,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 160,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 10,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "用 {water} 温水将 {matcha} 抹茶粉搅打至没有结块。",
+        "杯中加入 {ice} 冰块、{syrup} 糖浆，倒入 {milk} 牛奶。",
+        "沿冰块缓缓倒入抹茶液，欣赏分层后搅匀饮用。"
+      ],
+      "story": "抹茶以整片茶叶研磨成粉，与牛奶融合后，茶的微苦与奶香形成柔和的平衡。此处是适合家庭制作的冰饮版本。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "matcha": "纯抹茶粉，不是含糖抹茶饮料粉",
+          "water": "饮用水；按本页标注分别量取 ml 或称量 g",
+          "milk": "可直接饮用的原味牛奶",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "whisk",
+          "alternatives": [
+            "frother"
+          ]
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "espresso-tonic",
+      "name": "咖啡汤力",
+      "en": "ESPRESSO TONIC",
+      "category": "coffee",
+      "image": 1,
+      "description": "气泡轻盈，咖啡醇香。一口清爽，唤醒整个午后。",
+      "tags": [
+        "微苦清爽",
+        "细腻气泡"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "tonic",
+          "amount": 150,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "orange",
+          "amount": 1,
+          "unit": "片",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "杯中加入 {ice} 冰块，倒入 {tonic} 汤力水。",
+        "将 {espresso} 浓缩咖啡液沿杯壁缓缓倒入。",
+        "可用 {orange} 橙皮轻挤香气点缀；不加也可以。轻轻搅拌后饮用。"
+      ],
+      "story": "浓缩咖啡与汤力水的组合，将咖啡的烘焙香气和汤力水的微苦气泡相连。不同烘焙的咖啡会带来不同风味。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "tonic": "可直接饮用的汤力水，含甜味和苦味",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算",
+          "orange": "洗净橙子的橙皮，装饰可选"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        },
+        {
+          "id": "sieve",
+          "optional": true,
+          "note": "按装饰或细滤需求使用。"
+        }
+      ]
+    },
+    {
+      "id": "oat-latte",
+      "name": "冰燕麦拿铁",
+      "en": "ICED OAT LATTE",
+      "category": "coffee",
+      "image": 2,
+      "description": "烘焙香气与谷物甜感，恰好是温柔的一杯。",
+      "tags": [
+        "谷物香气",
+        "柔和顺滑"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "oat",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "在杯中加入 {ice} 冰块。",
+        "倒入 {oat} 燕麦奶，再缓缓加入 {espresso} 浓缩咖啡液。",
+        "轻轻搅匀。燕麦奶的甜度依品牌而异，先品尝再决定是否加糖。"
+      ],
+      "story": "以燕麦饮替代牛奶的拿铁版本。燕麦奶不是所有配方中与牛奶完全等效的替代品，风味和质地会有所不同。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "oat": "可直接饮用的燕麦饮；品牌甜度与起泡性有差异",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "flat-white",
+      "name": "馥芮白",
+      "en": "FLAT WHITE",
+      "category": "coffee",
+      "image": 3,
+      "description": "细腻奶泡，浓郁咖啡。属于清晨的小小仪式。",
+      "tags": [
+        "浓郁咖啡",
+        "细腻奶泡"
+      ],
+      "minutes": 6,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 36,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 120,
+          "unit": "ml",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "准备 {espresso} 浓缩咖啡液。",
+        "将 {milk} 牛奶加热并打成细腻薄奶泡，避免沸腾。",
+        "把热牛奶缓缓融合进浓缩咖啡中。没有蒸汽棒时，可用奶泡器制作家庭近似版本。"
+      ],
+      "story": "Flat White 常被认为起源于澳大利亚或新西兰，具体起源存在争议。这里采用较小杯量的家庭参考比例。",
+      "method": "热调",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "milk": "可直接饮用的原味牛奶"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "heater"
+        },
+        {
+          "id": "frother",
+          "note": "细腻奶泡所需；没有时可制作无奶泡家庭版本。"
+        }
+      ]
+    },
+    {
+      "id": "vanilla-latte",
+      "name": "香草冰拿铁",
+      "en": "VANILLA ICED LATTE",
+      "category": "coffee",
+      "image": 4,
+      "description": "淡淡香草，为熟悉的拿铁加一点甜。",
+      "tags": [
+        "香草甜香",
+        "经典奶咖"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 170,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "vanilla",
+          "amount": 15,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {vanilla} 香草糖浆与 {espresso} 浓缩咖啡液混合。",
+        "杯中放入 {ice} 冰块，倒入 {milk} 牛奶。",
+        "加入香草咖啡液，搅匀。先品尝后再调整甜度。"
+      ],
+      "story": "香草拿铁是风味拿铁的一种。糖浆浓度与香气随品牌变化，用量仅作为起点。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "milk": "可直接饮用的原味牛奶",
+          "vanilla": "可直接调饮的香草糖浆；浓度与甜度随品牌变化",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "coconut-coffee",
+      "name": "椰乳冰咖啡",
+      "en": "COCONUT ICED COFFEE",
+      "category": "coffee",
+      "image": 5,
+      "description": "椰香与咖啡相遇，像给自己放了一个短假。",
+      "tags": [
+        "椰香浓郁",
+        "热带风味"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "coconut",
+          "amount": 160,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "杯中加入 {ice} 冰块。",
+        "倒入 {coconut} 椰乳和 {espresso} 浓缩咖啡液。",
+        "搅拌均匀，按椰乳本身的甜度决定是否额外加糖。"
+      ],
+      "story": "采用可直接饮用的椰乳，不是罐装浓稠椰浆。两者脂肪、浓度和甜度不同，不能直接按同量互换。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "coconut": "可直接饮用的椰乳，不是浓稠椰浆",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "hot-latte",
+      "name": "热拿铁",
+      "en": "CAFFÈ LATTE",
+      "category": "coffee",
+      "image": 6,
+      "description": "温热奶香，拥抱一口醇厚的咖啡。",
+      "tags": [
+        "温暖奶香",
+        "柔和醇厚"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "espresso",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "准备 {espresso} 浓缩咖啡液。",
+        "将 {milk} 牛奶温热并打成细腻奶泡，不要煮沸。",
+        "将牛奶缓缓倒入浓缩咖啡，最后覆盖薄薄的奶泡。"
+      ],
+      "story": "拿铁以浓缩咖啡与牛奶调配。相比本目录的馥芮白参考版本，这杯牛奶比例更高。",
+      "method": "热调",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、咖啡萃取；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "espresso": "已萃取的意式浓缩；本页按体积量取，不把出液克数当毫升",
+          "milk": "可直接饮用的原味牛奶"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "heater"
+        },
+        {
+          "id": "frother",
+          "note": "细腻奶泡所需；没有时可制作无奶泡家庭版本。"
+        }
+      ]
+    },
+    {
+      "id": "peach-oolong",
+      "name": "白桃乌龙",
+      "en": "PEACH OOLONG TEA",
+      "category": "tea",
+      "image": 7,
+      "description": "清甜桃香，轻盈茶韵。把夏天装进杯子里。",
+      "tags": [
+        "白桃清甜",
+        "清爽茶韵"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "oolong",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "peach",
+          "amount": 60,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 10,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {peach} 白桃果肉轻压出汁。",
+        "加入 {syrup} 糖浆和 {ice} 冰块。",
+        "倒入已冷却的 {oolong} 乌龙茶汤，搅匀饮用。"
+      ],
+      "story": "以事先泡好、冷却的乌龙茶为基底。页面时间不含茶叶浸泡与冷却；不同茶叶需要分别控制浸泡条件。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、泡茶、过滤与冷却、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "oolong": "按包装冲泡、过滤并冷却的乌龙茶汤；浓度未实测",
+          "peach": "去核白桃果肉，按可食部分称量",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "muddler",
+          "alternatives": [
+            "spoon"
+          ],
+          "note": "用于轻压果肉；手压版本保留颗粒，追求细腻质地时需另行搅打。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "blacktea-latte",
+      "name": "红茶拿铁",
+      "en": "BLACK TEA LATTE",
+      "category": "tea",
+      "image": 8,
+      "description": "茶香浓一点，日子慢一点。",
+      "tags": [
+        "醇厚红茶",
+        "丝滑奶香"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "blacktea",
+          "amount": 100,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 120,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 12,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 80,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "准备并冷却 {blacktea} 较浓的红茶茶汤。",
+        "杯中加入 {ice} 冰块与 {syrup} 糖浆。",
+        "倒入 {milk} 牛奶和红茶，搅拌均匀。"
+      ],
+      "story": "这里的“拿铁”指牛奶与茶的组合，不含咖啡。使用已备好的茶汤，制作时间不含泡茶与冷却。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、泡茶、过滤与冷却、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "blacktea": "按茶叶包装冲泡、过滤并冷却的红茶茶汤；浓度未实测",
+          "milk": "可直接饮用的原味牛奶",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "lemon-tea",
+      "name": "手作柠檬红茶",
+      "en": "LEMON BLACK TEA",
+      "category": "tea",
+      "image": 9,
+      "description": "明亮柠香，让红茶也轻快起来。",
+      "tags": [
+        "清新酸甜",
+        "解腻清爽"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "blacktea",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "lemon",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {syrup} 糖浆与 {lemon} 柠檬汁混合。",
+        "加入 {ice} 冰块与已冷却的 {blacktea} 红茶茶汤。",
+        "充分搅匀，依据柠檬实际酸度小量调整。"
+      ],
+      "story": "家庭柠檬茶版本。避免长时间浸泡带皮柠檬造成苦味。参考用量不代表各种柠檬都有相同酸度。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、泡茶、过滤与冷却、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "blacktea": "按茶叶包装冲泡、过滤并冷却的红茶茶汤；浓度未实测",
+          "lemon": "柠檬汁，按体积量取；酸度依水果变化",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "jasmine-latte",
+      "name": "茉莉奶绿",
+      "en": "JASMINE MILK TEA",
+      "category": "tea",
+      "image": 10,
+      "description": "花香轻轻，奶香柔柔。",
+      "tags": [
+        "茉莉花香",
+        "轻盈奶感"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "jasmine",
+          "amount": 120,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 100,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 12,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 80,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "准备已冷却的 {jasmine} 茉莉茶汤。",
+        "加入 {syrup} 糖浆、{milk} 牛奶与 {ice} 冰块。",
+        "充分搅匀，立即饮用。"
+      ],
+      "story": "以茉莉茶为底的家庭奶茶版本。过度浸泡可能让奶茶涩口，建议依茶叶包装控制冲泡。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、泡茶、过滤与冷却、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "jasmine": "按包装冲泡、过滤并冷却的茉莉茶汤；浓度未实测",
+          "milk": "可直接饮用的原味牛奶",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "grape-jasmine",
+      "name": "青提茉莉气泡茶",
+      "en": "GRAPE JASMINE FIZZ",
+      "category": "tea",
+      "image": 11,
+      "description": "果香、花香和气泡，刚刚好的轻盈。",
+      "tags": [
+        "鲜果花香",
+        "轻盈气泡"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "grape",
+          "amount": 60,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "jasmine",
+          "amount": 100,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 80,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 10,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 80,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {grape} 青提洗净去籽后轻压出汁。",
+        "加入 {syrup} 糖浆、{ice} 冰块与冷却的 {jasmine} 茉莉茶汤。",
+        "最后倒入 {soda} 苏打水，轻轻拌匀。"
+      ],
+      "story": "用新鲜青提和现成茶汤调配的果茶。气泡水最后加入，避免剧烈摇晃导致气泡流失。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、泡茶、过滤与冷却、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "grape": "洗净去籽的青提可食部分",
+          "jasmine": "按包装冲泡、过滤并冷却的茉莉茶汤；浓度未实测",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "muddler",
+          "alternatives": [
+            "spoon"
+          ],
+          "note": "用于轻压果肉；手压版本保留颗粒，追求细腻质地时需另行搅打。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "strawberry-milk",
+      "name": "草莓鲜奶",
+      "en": "STRAWBERRY MILK",
+      "category": "fruit",
+      "image": 12,
+      "description": "一口草莓，一口奶香。简单也能很幸福。",
+      "tags": [
+        "鲜果甜香",
+        "绵柔奶感"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "strawberry",
+          "amount": 80,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 10,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 60,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {strawberry} 草莓洗净去蒂，加入 {syrup} 糖浆压成小颗粒果泥。",
+        "杯底放入果泥与 {ice} 冰块。",
+        "缓缓倒入 {milk} 牛奶，饮用前搅匀。"
+      ],
+      "story": "以新鲜果泥制作的家庭草莓奶。水果酸度和成熟度不同，建议现做现喝。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "strawberry": "洗净去蒂的草莓，按可食部分称量",
+          "milk": "可直接饮用的原味牛奶",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "muddler",
+          "alternatives": [
+            "spoon"
+          ],
+          "note": "用于轻压果肉；手压版本保留颗粒，追求细腻质地时需另行搅打。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "mango-milk",
+      "name": "芒果鲜奶",
+      "en": "MANGO MILK",
+      "category": "fruit",
+      "image": 13,
+      "description": "阳光一样的芒果，搭配柔软奶香。",
+      "tags": [
+        "浓郁果香",
+        "柔和香甜"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "mango",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "milk",
+          "amount": 160,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 60,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "将 {mango} 芒果果肉压泥或搅打细腻。",
+        "杯中加入芒果泥与 {ice} 冰块。",
+        "倒入 {milk} 牛奶，充分搅匀。"
+      ],
+      "story": "选成熟芒果可以减少额外糖的需求。本配方不额外加糖，但不代表成品不含糖。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "mango": "去皮去核的成熟芒果果肉",
+          "milk": "可直接饮用的原味牛奶",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "muddler",
+          "alternatives": [
+            "spoon"
+          ],
+          "note": "用于轻压果肉；手压版本保留颗粒，追求细腻质地时需另行搅打。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "grapefruit-soda",
+      "name": "西柚气泡饮",
+      "en": "GRAPEFRUIT SODA",
+      "category": "fruit",
+      "image": 14,
+      "description": "微苦的西柚，被气泡轻轻托起。",
+      "tags": [
+        "果香微苦",
+        "清爽气泡"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "grapefruit",
+          "amount": 80,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 140,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 15,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "混合 {grapefruit} 西柚汁与 {syrup} 糖浆。",
+        "加入 {ice} 冰块。",
+        "沿杯壁倒入 {soda} 苏打水，轻轻搅匀。"
+      ],
+      "story": "西柚本身的微苦是这杯饮品的特点。此处采用果汁，不将整果重量等同于果汁体积。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "grapefruit": "可直接饮用的西柚汁，不是浓缩汁",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "passionfruit-soda",
+      "name": "百香果气泡饮",
+      "en": "PASSION FRUIT FIZZ",
+      "category": "fruit",
+      "image": 15,
+      "description": "热带果香跃进杯子，酸甜明亮。",
+      "tags": [
+        "热带果香",
+        "明亮酸甜"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "passionfruit",
+          "amount": 30,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "杯中加入 {passionfruit} 百香果果肉和 {syrup} 糖浆。",
+        "加入 {ice} 冰块。",
+        "倒入 {soda} 苏打水，轻轻搅匀。"
+      ],
+      "story": "采用含籽的新鲜百香果果肉。浓缩果酱不能按相同重量直接替代。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "passionfruit": "含籽新鲜百香果果肉，不是浓缩果酱",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "lemon-soda",
+      "name": "薄荷柠檬气泡饮",
+      "en": "MINT LEMON SODA",
+      "category": "fruit",
+      "image": 16,
+      "description": "柠檬与薄荷，清爽得刚刚好。",
+      "tags": [
+        "清爽柠香",
+        "薄荷气息"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "lemon",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 180,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "mint",
+          "amount": 4,
+          "unit": "片",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "混合 {lemon} 柠檬汁与 {syrup} 糖浆。",
+        "加入 {ice} 冰块与 {soda} 苏打水。",
+        "可轻拍 {mint} 薄荷叶后放入，轻轻搅匀。薄荷可省略。"
+      ],
+      "story": "一杯无需酒精的清爽气泡饮。薄荷作为可选香气点缀，不影响严格材料筛选。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "lemon": "柠檬汁，按体积量取；酸度依水果变化",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算",
+          "mint": "洗净的新鲜薄荷叶，按叶片计数"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        },
+        {
+          "id": "sieve",
+          "optional": true,
+          "note": "按装饰或细滤需求使用。"
+        }
+      ]
+    },
+    {
+      "id": "pineapple-soda",
+      "name": "菠萝气泡饮",
+      "en": "PINEAPPLE FIZZ",
+      "category": "fruit",
+      "image": 17,
+      "description": "金黄菠萝，把日常调成假日。",
+      "tags": [
+        "鲜甜果香",
+        "轻盈气泡"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "pineapple",
+          "amount": 100,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 120,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 100,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "在杯中放入 {ice} 冰块。",
+        "倒入 {pineapple} 菠萝汁。",
+        "加入 {soda} 苏打水并轻轻搅匀，按果汁甜度决定是否另外加糖。"
+      ],
+      "story": "本版本用可直接饮用的菠萝汁制作，不是浓缩菠萝汁。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": false,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "pineapple": "可直接饮用的菠萝汁，不是浓缩汁",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "gin-tonic",
+      "name": "金汤力",
+      "en": "GIN & TONIC",
+      "category": "cocktail",
+      "image": 18,
+      "description": "杜松子与气泡，清爽而利落。",
+      "tags": [
+        "清爽微苦",
+        "经典长饮"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "gin",
+          "amount": 45,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "tonic",
+          "amount": 120,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "limewedge",
+          "amount": 1,
+          "unit": "片",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "在高球杯中加入 {ice} 冰块。",
+        "倒入 {gin} 金酒与 {tonic} 汤力水。",
+        "轻轻搅匀，可用 {limewedge} 青柠片点缀。"
+      ],
+      "story": "金酒与汤力水的经典组合。本版本是便于家庭制作的参考比例，品牌与偏好会影响最佳配比。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "gin": "金酒，按体积量取",
+          "tonic": "可直接饮用的汤力水，含甜味和苦味",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算",
+          "limewedge": "洗净青柠切片，装饰可选"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        },
+        {
+          "id": "sieve",
+          "optional": true,
+          "note": "按装饰或细滤需求使用。"
+        }
+      ]
+    },
+    {
+      "id": "mojito",
+      "name": "莫吉托",
+      "en": "MOJITO",
+      "category": "cocktail",
+      "image": 19,
+      "description": "薄荷清凉，青柠明亮，气泡轻盈。",
+      "tags": [
+        "薄荷青柠",
+        "清爽气泡"
+      ],
+      "minutes": 6,
+      "ingredients": [
+        {
+          "id": "rum",
+          "amount": 45,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "lime",
+          "amount": 25,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "mint",
+          "amount": 6,
+          "unit": "片",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 80,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "轻压 {mint} 薄荷叶，与 {lime} 青柠汁、{syrup} 糖浆混合，避免捣碎叶片。",
+        "加入 {rum} 白朗姆酒与 {ice} 冰块。",
+        "倒入 {soda} 苏打水，轻轻提拉搅匀。"
+      ],
+      "story": "经典古巴风格长饮。本家庭版本用糖浆代替砂糖；用量和步骤与经典原方有所不同。",
+      "method": "兑制",
+      "source": "https://iba-world.com/",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "rum": "白朗姆酒，按体积量取",
+          "lime": "青柠汁，按体积量取；酸度依水果变化",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "mint": "洗净的新鲜薄荷叶，按叶片计数",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "muddler",
+          "alternatives": [
+            "spoon"
+          ],
+          "note": "轻压薄荷；本配方使用青柠汁，避免捣碎叶片。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "negroni",
+      "name": "尼格罗尼",
+      "en": "NEGRONI",
+      "category": "cocktail",
+      "image": 20,
+      "description": "苦甜交织，柑橘香气慢慢展开。",
+      "tags": [
+        "苦甜浓郁",
+        "柑橘香气"
+      ],
+      "minutes": 4,
+      "ingredients": [
+        {
+          "id": "gin",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "campari",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "vermouth",
+          "amount": 30,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "orange",
+          "amount": 1,
+          "unit": "片",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "杯中加入 {ice} 冰块。",
+        "加入 {gin} 金酒、{campari} 金巴利与 {vermouth} 甜味美思。",
+        "搅拌至充分冰镇，可用 {orange} 橙皮挤香装饰。"
+      ],
+      "story": "经典的等份比例鸡尾酒，以金酒、金巴利和甜味美思调配，具有鲜明苦甜风味。",
+      "method": "搅拌",
+      "source": "https://iba-world.com/",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "gin": "金酒，按体积量取",
+          "campari": "金巴利苦味利口酒",
+          "vermouth": "甜味美思，不使用干味美思等量替换",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算",
+          "orange": "洗净橙子的橙皮，装饰可选"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "mixglass",
+          "alternatives": [
+            "cup"
+          ],
+          "note": "可用容量足够的杯子搅拌后滤冰。"
+        },
+        {
+          "id": "strainer",
+          "alternatives": [
+            "sieve"
+          ]
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        },
+        {
+          "id": "sieve",
+          "optional": true,
+          "note": "按装饰或细滤需求使用。"
+        }
+      ]
+    },
+    {
+      "id": "daiquiri",
+      "name": "代基里",
+      "en": "DAIQUIRI",
+      "category": "cocktail",
+      "image": 21,
+      "description": "朗姆、青柠和糖，简单而平衡。",
+      "tags": [
+        "明亮酸甜",
+        "经典短饮"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "rum",
+          "amount": 60,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "lime",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "syrup",
+          "amount": 15,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "摇酒壶中加入 {rum} 白朗姆酒、{lime} 青柠汁和 {syrup} 糖浆。",
+        "加入 {ice} 冰块，摇和至充分冰镇。",
+        "滤冰倒入预冷的鸡尾酒杯。"
+      ],
+      "story": "代基里以朗姆酒、青柠和糖构成基本平衡。本参考版本采用糖浆，比例随糖浆浓度调整。",
+      "method": "摇和",
+      "source": "https://iba-world.com/",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷、糖浆制作与冷却；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "rum": "白朗姆酒，按体积量取",
+          "lime": "青柠汁，按体积量取；酸度依水果变化",
+          "syrup": "白砂糖:水按质量 1:1 的原味糖浆；冷却后按体积量取",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "shaker",
+          "alternatives": [
+            "sealedjar"
+          ],
+          "note": "只用于冷饮；替代容器须适合接触食品、牢固密闭并留有空间。"
+        },
+        {
+          "id": "strainer",
+          "alternatives": [
+            "sieve"
+          ],
+          "note": "滤去冰块，细滤效果随工具变化。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    },
+    {
+      "id": "margarita",
+      "name": "玛格丽特",
+      "en": "MARGARITA",
+      "category": "cocktail",
+      "image": 22,
+      "description": "青柠的酸，龙舌兰的香，恰到好处。",
+      "tags": [
+        "青柠酸香",
+        "清冽果香"
+      ],
+      "minutes": 5,
+      "ingredients": [
+        {
+          "id": "tequila",
+          "amount": 50,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "triple",
+          "amount": 20,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "lime",
+          "amount": 15,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "id": "salt",
+          "amount": 1,
+          "unit": "g",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "可将杯沿润湿后蘸少许 {salt} 盐，不加盐边也可以。",
+        "在摇酒壶中加入 {tequila} 龙舌兰酒、{triple} 橙味利口酒、{lime} 青柠汁与 {ice} 冰块。",
+        "充分摇和，滤入预冷的鸡尾酒杯。"
+      ],
+      "story": "经典龙舌兰鸡尾酒。这里采用龙舌兰、橙味利口酒与青柠汁的常见参考配比。",
+      "method": "摇和",
+      "source": "https://iba-world.com/",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "tequila": "龙舌兰酒，按体积量取",
+          "triple": "橙味利口酒，按体积量取",
+          "lime": "青柠汁，按体积量取；酸度依水果变化",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算",
+          "salt": "食用盐，盐边可省略"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "shaker",
+          "alternatives": [
+            "sealedjar"
+          ],
+          "note": "只用于冷饮；替代容器须适合接触食品、牢固密闭并留有空间。"
+        },
+        {
+          "id": "strainer",
+          "alternatives": [
+            "sieve"
+          ],
+          "note": "滤去冰块，细滤效果随工具变化。"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        },
+        {
+          "id": "sieve",
+          "optional": true,
+          "note": "按装饰或细滤需求使用。"
+        }
+      ]
+    },
+    {
+      "id": "whisky-highball",
+      "name": "威士忌高球",
+      "en": "WHISKY HIGHBALL",
+      "category": "cocktail",
+      "image": 23,
+      "description": "用气泡打开威士忌的轻盈一面。",
+      "tags": [
+        "清爽麦香",
+        "轻盈长饮"
+      ],
+      "minutes": 3,
+      "ingredients": [
+        {
+          "id": "whisky",
+          "amount": 45,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "soda",
+          "amount": 135,
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "id": "ice",
+          "amount": 120,
+          "unit": "g",
+          "optional": false
+        }
+      ],
+      "steps": [
+        "在高球杯中加入 {ice} 冰块，倒入 {whisky} 威士忌。",
+        "轻轻搅拌冰镇。",
+        "沿杯壁倒入 {soda} 苏打水，轻轻提拉一次即可。"
+      ],
+      "story": "Highball 是基酒与大量非酒精饮料调配的长饮类别，此处采用威士忌和苏打水。",
+      "method": "兑制",
+      "source": "家庭调配参考版本，待实际试做。",
+      "alcohol": true,
+      "reference": {
+        "version": "2026-10-29.2",
+        "status": "reference",
+        "timeNote": "标注为调配参考时间，不含材料称量与清洗、制冰、杯子预冷；实际耗时依设备和熟练度变化。",
+        "specs": {
+          "whisky": "威士忌，按体积量取",
+          "soda": "无糖原味苏打气泡水，不是汤力水",
+          "ice": "食用冰块，按质量称量，不按杯中体积推算"
+        }
+      },
+      "toolRequirements": [
+        {
+          "id": "cup"
+        },
+        {
+          "id": "measure"
+        },
+        {
+          "id": "spoon"
+        },
+        {
+          "id": "scale",
+          "optional": true,
+          "note": "推荐用于准确称量克数，尤其是粉料与果肉。"
+        }
+      ]
+    }
+  ],
+  "ingredientIds": [
+    "sugar",
+    "coffeebeans",
+    "groundcoffee",
+    "filtercoffee",
+    "coldbrew",
+    "instantcoffee",
+    "espresso",
+    "matcha",
+    "hojicha",
+    "blacktea",
+    "oolong",
+    "jasmine",
+    "milk",
+    "oat",
+    "coconut",
+    "water",
+    "soda",
+    "tonic",
+    "ice",
+    "syrup",
+    "vanilla",
+    "honey",
+    "salt",
+    "peach",
+    "lemon",
+    "lime",
+    "limewedge",
+    "strawberry",
+    "mango",
+    "grapefruit",
+    "passionfruit",
+    "grape",
+    "pineapple",
+    "mint",
+    "orange",
+    "gin",
+    "rum",
+    "campari",
+    "vermouth",
+    "tequila",
+    "triple",
+    "whisky"
+  ],
+  "toolIds": [
+    "cup",
+    "measure",
+    "spoon",
+    "shaker",
+    "sealedjar",
+    "strainer",
+    "sieve",
+    "mixglass",
+    "muddler",
+    "whisk",
+    "frother",
+    "heater",
+    "scale",
+    "espressoMachine",
+    "grinder"
+  ],
+  "fresh": {
+    "schemaVersion": 2,
+    "customRecipes": [],
+    "collections": [],
+    "favorites": [],
+    "stock": {},
+    "equipment": {},
+    "versions": [],
+    "plan": [],
+    "coffeeRecords": [],
+    "theme": "oat"
+  }
+}

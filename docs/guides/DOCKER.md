@@ -11,7 +11,7 @@ docker compose up -d --build
 docker compose ps
 ```
 
-打开 http://127.0.0.1:8080/。镜像以 node 用户运行，程序目录只读，仅 /data 命名卷和 /tmp 可写；SQLite 自动创建，不需安装额外数据库。
+打开 http://127.0.0.1:8080/。web 服务以 nginx 用户提供静态前端并代理 /api；onecup 服务以 onecup 用户（UID/GID 1000，兼容旧卷）运行 Go API。API 程序目录只读，仅 /data 命名卷和 /tmp 可写；SQLite 自动创建，不需安装额外数据库。
 
 ## 卷与更新
 
@@ -40,7 +40,7 @@ ONECUP_AUTO_BACKUP_HOURS=24
 
 如使用外部访问入口，另设置 ONECUP_ORIGIN 为实际完整来源，例如 https://drinks.example.com，并配置带访问控制的 HTTPS 反向代理。开放到可信局域网时同时配置绑定地址与实际来源；没有账号隔离，能访问者共用记录。
 
-如果改用宿主目录绑定 /data，先确保宿主目录允许容器 node 用户（UID/GID 1000）写入；命名卷无需手动设置所有权。错误权限、磁盘满或只读挂载会导致保存失败，检查 docker compose logs 和 /healthz，先导出页面中的未保存修改。
+如果改用宿主目录绑定 /data，先确保宿主目录允许容器 onecup 用户（UID/GID 1000）写入；命名卷无需手动设置所有权。错误权限、磁盘满或只读挂载会导致保存失败，检查 docker compose logs 和 /healthz，先导出页面中的未保存修改。
 
 ## 验证持久性
 

@@ -16,3 +16,6 @@ tests
 *.sqlite*
 *.pem
 *.key
+
+backend/bin
+.superpowers

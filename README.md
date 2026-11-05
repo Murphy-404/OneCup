@@ -2,9 +2,9 @@
 
 **无需登录、自己部署、用手边材料做一杯。**
 
-[文档导航](docs/README.md) · [部署](docs/guides/DEPLOYMENT.md) · [Docker](docs/guides/DOCKER.md) · [Cloudflare](docs/guides/CLOUDFLARE.md) · [数据与备份](docs/guides/STORAGE.md) · [路线图](docs/product/ROADMAP.md) · [许可证](LICENSE)
+[文档导航](docs/README.md) · [部署](docs/guides/DEPLOYMENT.md) · [Docker](docs/guides/DOCKER.md) · [Cloudflare](docs/guides/CLOUDFLARE.md) · [数据与备份](docs/guides/STORAGE.md) · [架构](docs/development/ARCHITECTURE.md) · [迁移到 Go](docs/guides/MIGRATION-GO.md) · [路线图](docs/product/ROADMAP.md) · [许可证](LICENSE)
 
-v0.3 使用 **Node.js + 服务端 SQLite + Docker 持久数据卷**。记录保存到服务器；更换浏览器或清理站点数据后，重新连接同一实例即可读取。一个实例对应一份私人工作区，所有连接设备共用记录，没有账号和社交功能。
+当前自托管架构为 **React + TypeScript 前端、Go HTTP API、SQLite 持久存储**。Docker 将 Nginx 前端和 Go 后端分成两个服务。记录保存到服务器；更换浏览器或清理站点数据后，重新连接同一实例即可读取。一个实例对应一份私人工作区，所有连接设备共用记录，没有账号和社交功能。
 
 > 仅限个人非商业使用，必须标注来源。自定义许可不属于 OSI 开源许可；商业或组织使用需要另行授权，见 LICENSE。
 
@@ -39,15 +39,15 @@ docker compose up -d --build
 
 ## 本地运行与开发
 
-需要 Node.js 24+。
+从源码构建需要 **Node.js 24+ 和 Go 1.27.3+**；编译后的 Go 程序运行不需要 Node 或 Go 环境。
 
 ```sh
 npm ci
-npm run build
+npm run build:all
 npm start
 ```
 
-访问 http://127.0.0.1:8080/，数据库默认 data/onecup.sqlite。开发时运行 npm run dev，同时启动 Vite（5173）与 API（3001）。生产运行必须包含 Node API；仅上传 dist/ 到静态主机不能保存数据。
+访问 http://127.0.0.1:8080/，数据库默认 data/onecup.sqlite。开发时运行 npm run dev，同时启动 Vite（5173）与 API（3001）。生产运行必须包含 Go API；仅上传 dist/ 到静态主机不能保存数据。
 
 ## 当前功能
 
@@ -70,7 +70,7 @@ npm start
 服务器默认启动时及每 24 小时生成 SQLite 快照，位于 data/backups（Docker 为 /data/backups）；不自动清理，需检查磁盘空间并定期离机备份。手动备份：
 
 ```sh
-docker compose exec -T onecup node server-dist/cli.mjs backup /data/backups/manual.sqlite
+docker compose exec -T onecup /app/onecup backup /data/backups/manual.sqlite
 docker compose cp onecup:/data/backups/manual.sqlite ./onecup-backup.sqlite
 ```
 
@@ -80,6 +80,9 @@ v1 JSON 导入自动升级为 v2；v2 包含自建配方和合集。恢复会替
 
 ```sh
 npm test
+npm run test:backend
+npm run build:backend
+npm run test:native
 npm run build
 npm run audit:content
 ```
@@ -87,6 +90,12 @@ npm run audit:content
 GitHub Actions 在 Windows/Linux 运行构建和测试，并实际构建 Docker、写入记录、重建容器、验证数据保留和 SQLite 恢复。具体用例与人工验证边界见 [验证记录](docs/testing/VALIDATION.md)。
 
 [贡献指南](CONTRIBUTING.md) · [安全说明](SECURITY.md) · [第三方许可](THIRD_PARTY_NOTICES.md) · [素材说明](docs/reference/ASSETS.md)
+
+## 使用授权与来源标注
+
+允许自然人用于个人非商业学习、修改和家庭自托管。商业、组织或代表组织的使用需要另行书面授权，以 [LICENSE](LICENSE) 全文为准。
+
+部署或分发时保留许可、版权和第三方声明；在页脚、关于页或类似位置展示「Based on OneCup by Murphy-404」，链接至 [原项目](https://github.com/Murphy-404/OneCup)。修改版注明修改内容，不暗示原作者背书。
 
 ![桌面随机首页](docs/images/home-desktop.png)
 

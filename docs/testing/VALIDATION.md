@@ -1,6 +1,6 @@
 # 验证记录与用例
 
-版本 v0.3，80 项 Node/领域测试，另有 6 项 Worker/D1 集成测试。运行 npm test、npm run test:cf、npm run build、npm run audit:content。
+2026-11-05 Go 重构：70 项前端/领域测试、59 个 TypeScript→Go 合约样例、Go SQLite/HTTP/配置集成测试、原生二进制冒烟，以及 6 项 Worker/D1 集成测试。运行 npm run build:all、npm test、npm run test:backend、npm run test:native、npm run test:cf。旧 Node 自托管测试由真实 Go 存储/API 测试替代。
 
 ## 自动化用例
 
@@ -47,3 +47,15 @@ GitHub Actions 同时在 Windows/Linux 测试。Docker 行为由 docker-smoke �
 测试覆盖图片格式/大小校验、UTF-8 总量检查、上传处理的质量重试和资源释放、单图预览的可访问性标记、草稿/做法/备料/合集的图片备份往返、旧快照保持、SQLite 重开与独立备份、D1 图片保存及无效更换的原子拒绝。编码处理测试使用确定性适配器，不代表真实浏览器编解码或实体手机验收。
 
 本轮 Codex 浏览器控制在设置中被关闭，未执行本轮页面点选、真实上传编解码与视觉验收；此前截图不作为图片上传功能的验收证明。
+
+## Go 重构新增覆盖
+
+空 PATH 原生进程：保存完整图片、私人配方与合集后关闭重开；直接读取旧 Node workspace 数据库；在线备份、只读 verify、无确认恢复拒绝、确认恢复及 before-restore 快照。Go 测试还覆盖并发 CAS、幂等重试、损坏/缺失记录不重置、错误请求不修改数据库、5 MB 边界、HEAD/SPA/资源404、CSP，以及未来数据库版本/账号备份拒绝。Windows 原生冒烟与 Linux amd64 CGO=0 交叉编译已运行；Linux 运行和 Docker 实测以 CI 为准。
+
+这轮没有新的真实浏览器或手机视觉回归，前面的截图属于历史验收。详见 [重构记录](../development/GO-REFACTOR.md)。
+
+## 2026-11-05 CI 实测结果
+
+运行代码 commit `00b5809` 的 [GitHub Actions](https://github.com/Murphy-404/OneCup/actions/runs/42021139437)：Windows、Linux 构建与测试，以及 Docker smoke 三个作业全部成功。Docker 实际完成双镜像构建、非 root 服务启动、静态资源与单用户 API 检查、写入记录、重建容器后读取、创建及校验 SQLite 快照、修改工作区、确认恢复并再次核对原数据。
+
+初次容器测试暴露 Nginx 基础镜像使用 /run/nginx.pid 导致普通用户无法启动。修复为仓库内显式 nginx-main.conf，PID 写入 /tmp；重新构建、启动与恢复已通过。保留失败与修复记录，避免将配置静态检查当作容器运行证明。
